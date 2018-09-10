@@ -18,8 +18,8 @@ typedef struct hashNode {
 typedef struct heapNode {
     long int frequency;
     unsigned char byte;
-    struct HeapNode *left;
-    struct HeapNode *right;
+    struct heapNode *left;
+    struct heapNode *right;
 } HeapNode;
 
 // Cria um novo node para a hashTable com frequencia 1

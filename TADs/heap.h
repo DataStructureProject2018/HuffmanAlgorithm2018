@@ -29,6 +29,7 @@ Heap* create_heap() {
         new_heap->data[i] = NULL;
     }
 
+
     return new_heap;
 
 }
@@ -76,7 +77,8 @@ void min_heapify(Heap *heap, int i) {
         smallest = rightIndex;
     }
 
-    if(heap->data[smallest]->frequency != heap->data[i]->frequency) {
+    // Tem que ver esse if depois
+    if(smallest != i) {
         swap_nodes(&heap->data[i], &heap->data[smallest]);
 
         min_heapify(heap, smallest);
@@ -96,7 +98,7 @@ void build_min_heap(Heap *heap) {
 }
 
 // Adiciona todos os nós da hashTable na heap e faz a heap mínima
-Heap* add_heap(HashTable *ht, Heap *heap) {
+Heap* ht_to_heap(HashTable *ht, Heap *heap) {
 
     int i, j = 1;
 
@@ -116,15 +118,57 @@ Heap* add_heap(HashTable *ht, Heap *heap) {
 
 }
 
-void print_heap(Heap *heap){
+// Adiciona novo node na Heap
+void add_node(Heap *heap, HeapNode *node) {
+
+    heap->data[++heap->size] = node;
+
+    int key_index = heap->size;
+    int parent_index = get_parent_index(heap->size);
+
+    while(parent_index >= 1 && heap->data[key_index]->frequency < heap->data[parent_index]->frequency){
+        swap_nodes(&heap->data[key_index], &heap->data[parent_index]);
+        key_index = parent_index;
+        parent_index = get_parent_index(key_index);
+    }
+
+}
+
+// Remove os 2 nodes com menor frequencia e adiciona um novo node com os nodes removidos
+void remove_node(Heap *heap) {
+
+    if(heap->size){
+        HeapNode *node = create_heapNode('*', heap->data[1]->frequency);
+        node->left = heap->data[1];
+
+        heap->data[1] = heap->data[heap->size];
+        heap->data[heap->size] = NULL;
+        heap->size--;
+
+        min_heapify(heap, 1);
+
+        if(heap->size >= 1) {
+            node->frequency += heap->data[1]->frequency;
+            node->right = heap->data[1];
+            heap->data[1] = heap->data[heap->size];
+            heap->data[heap->size] = NULL;
+            heap->size--;
+
+            min_heapify(heap, 1);
+        }
+
+        add_node(heap, node);
+    }
+
+}
+
+
+void print_heap(Heap *heap) {
 
     int i = 1;
-
     while(i < heap->size){
-
         printf("(%c , %ld) | ", heap->data[i]->byte, heap->data[i]->frequency);
         i++;
-
     }
 
     printf("(%c , %ld)\n", heap->data[i]->byte, heap->data[i]->frequency);
