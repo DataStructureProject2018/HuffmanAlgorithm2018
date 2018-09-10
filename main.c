@@ -4,13 +4,13 @@
 
 #include <stdio.h>
 #include "./compress/compress.h"
-#include "TADs/heap.h"
+#include "./TADs/heap.h"
 
 
 int main()
 {
 
-    FILE *in = fopen("teste.txt", "rb");
+    FILE *in = fopen("../teste.txt", "rb");
 
     HashTable *ht = get_frequency(in);
 
@@ -30,6 +30,8 @@ int main()
         remove_node(heap);
         print_heap(heap);
     }
+
+    print_heap_as_tree(heap->data[1]);
 
     fclose(in);
 
