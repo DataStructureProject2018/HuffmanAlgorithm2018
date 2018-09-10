@@ -10,7 +10,7 @@
 int main()
 {
 
-    FILE *in = fopen("../teste.txt", "rb");
+    FILE *in = fopen("teste.txt", "rb");
 
     HashTable *ht = get_frequency(in);
 
@@ -19,13 +19,19 @@ int main()
     printf("Printando a Heap:\n");
 
     Heap *heap = create_heap();
-    heap = add_heap(ht, heap);
+    heap = ht_to_heap(ht, heap);
 
     print_heap(heap);
+
+    // Teste
+    int i = 1;
+    while(heap->size > 1 || i == 1){
+        printf("\n%d: Removeu os 2 menores nos\nAdicionou um novo no\n", i++);
+        remove_node(heap);
+        print_heap(heap);
+    }
 
     fclose(in);
 
     return 0;
 }
-
-//teste
