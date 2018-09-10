@@ -69,11 +69,11 @@ void min_heapify(Heap *heap, int i) {
     int leftIndex = get_left_index(i);
     int rightIndex = get_right_index(i);
 
-    if(leftIndex <= heap->size && heap->data[leftIndex]->frequency < heap->data[i]->frequency) {
+    if(leftIndex <= heap->size && heap->data[leftIndex]->frequency <= heap->data[i]->frequency) {
         smallest = leftIndex;
     }
 
-    if(rightIndex <= heap->size && heap->data[rightIndex]->frequency < heap->data[smallest]->frequency) {
+    if(rightIndex <= heap->size && heap->data[rightIndex]->frequency <= heap->data[smallest]->frequency) {
         smallest = rightIndex;
     }
 
