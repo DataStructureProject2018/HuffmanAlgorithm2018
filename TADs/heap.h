@@ -77,7 +77,7 @@ void min_heapify(Heap *heap, int i) {
         smallest = rightIndex;
     }
 
-    // Tem que ver esse if depois
+    // TODO Tem que ver esse if depois
     if(smallest != i) {
         swap_nodes(&heap->data[i], &heap->data[smallest]);
 
