@@ -69,11 +69,11 @@ void min_heapify(Heap *heap, int i) {
     int leftIndex = get_left_index(i);
     int rightIndex = get_right_index(i);
 
-    if(leftIndex <= heap->size && heap->data[leftIndex]->frequency < heap->data[i]->frequency) {
+    if(leftIndex <= heap->size && heap->data[leftIndex]->frequency <= heap->data[i]->frequency) {
         smallest = leftIndex;
     }
 
-    if(rightIndex <= heap->size && heap->data[rightIndex]->frequency < heap->data[smallest]->frequency) {
+    if(rightIndex <= heap->size && heap->data[rightIndex]->frequency <= heap->data[smallest]->frequency) {
         smallest = rightIndex;
     }
 
@@ -126,7 +126,7 @@ void add_node(Heap *heap, HeapNode *node) {
     int key_index = heap->size;
     int parent_index = get_parent_index(heap->size);
 
-    while(parent_index >= 1 && heap->data[key_index]->frequency < heap->data[parent_index]->frequency){
+    while(parent_index >= 1 && heap->data[key_index]->frequency <= heap->data[parent_index]->frequency){
         swap_nodes(&heap->data[key_index], &heap->data[parent_index]);
         key_index = parent_index;
         parent_index = get_parent_index(key_index);
@@ -162,7 +162,6 @@ void remove_node(Heap *heap) {
 
 }
 
-
 void print_heap(Heap *heap) {
 
     int i = 1;
@@ -172,6 +171,16 @@ void print_heap(Heap *heap) {
     }
 
     printf("(%c , %ld)\n", heap->data[i]->byte, heap->data[i]->frequency);
+
+}
+
+void print_heap_as_tree(HeapNode *tree) {
+
+    if(tree) {
+        printf("%c", tree->byte);
+        print_heap_as_tree(tree->left);
+        print_heap_as_tree(tree->right);
+    }
 
 }
 

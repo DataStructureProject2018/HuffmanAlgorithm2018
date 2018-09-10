@@ -31,6 +31,8 @@ int main()
         print_heap(heap);
     }
 
+    print_heap_as_tree(heap->data[1]);
+
     fclose(in);
 
     return 0;
