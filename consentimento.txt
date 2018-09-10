@@ -1,0 +1,45 @@
+
+
+Typedef em estruturas: Todas começando em letras maiúsculas, se for nome composto fica: NomeDaStruct.
+
+        EX:
+                typedef struct nome {
+                    valores
+                } Nome;
+
+Identação: 
+            Funções: Chaves abrindo ao lado da declaração da mesma com um espaço, e comandos da função depois de um \n.
+
+                        Ex:
+                            void funcao() {
+
+                                comandos
+
+
+                                return;
+                            }
+
+            Alocação: Espaço entre o tipo da estrutura e o ponteiro.
+
+                        Ex:
+                            Node *head = (Node *)malloc(sizeof(Node));
+                                              ^  ^
+                                              1  2
+                                    1: Espaço obrigatório.
+                                    2: Espaço opcional.
+
+            Nomes de variáveis: Todas começam com letra minúscula, se for nome composto fica: nomeDaVariavel.
+
+                        Ex: 
+                            int nome;
+                            Node *head;
+                            Node *linkedList;
+
+Comentários: Como vamos fazer uma coisa em grupo, todas* as funções devem estar comentadas para melhor entedimento.
+
+                *Tirando as funções óbvias, nelas deve-se somente dizer pra que serve.
+
+Encapsulamento: Cada estrutura terá seu prórpio header(.h), nenhuma delas deve ser declarada nas funções principais.
+
+
+ACEITO OPINIÕES PARA ALTERAÇÕES E COISAS A MAIS
