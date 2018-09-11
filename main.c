@@ -4,36 +4,26 @@
 
 #include <stdio.h>
 #include "./compress/compress.h"
+#include "./decompress/decompress.h"
 #include "./TADs/heap.h"
 
 
 int main()
 {
+    int opcao;
 
-    FILE *in = fopen("../teste.txt", "rb");
+    printf("Digite sua opção:\n(1) Comprimir\n(2) Descomprimir\n(Outro) Sair\n");
 
-    HashTable *ht = get_frequency(in);
+    scanf("%d", &opcao);
 
-    print_table(ht);
-
-    printf("Printando a Heap:\n");
-
-    Heap *heap = create_heap();
-    heap = ht_to_heap(ht, heap);
-
-    print_heap(heap);
-
-    // Teste
-    int i = 1;
-    while(heap->size > 1 || i == 1){
-        printf("\n%d: Removeu os 2 menores nos\nAdicionou um novo no\n", i++);
-        remove_node(heap);
-        print_heap(heap);
+    if(opcao == 1) {
+        start_compression();
+    } else if(opcao == 2) {
+        start_decompression();
+    } else {
+        printf("Saindo do programa...\n");
     }
 
-    print_heap_as_tree(heap->data[1]);
-
-    fclose(in);
 
     return 0;
 }
