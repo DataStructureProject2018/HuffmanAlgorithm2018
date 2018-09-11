@@ -37,21 +37,21 @@ Heap* create_heap() {
 // Retorna a posição do Pai do índice i
 int get_parent_index(int i) {
 
-    return i/2;
+    return (i >> 1);
 
 }
 
 // Retorna a posição do Filho da esquerda do nó de índice i
 int get_left_index(int i) {
 
-    return 2*i;
+    return (i << 1);
 
 }
 
 // Retorna a posição do Filho da direita do nó de índice i
 int get_right_index(int i) {
 
-    return 2*i+1;
+    return (i << 1)+1;
 
 }
 
