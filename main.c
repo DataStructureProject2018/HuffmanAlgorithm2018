@@ -23,8 +23,7 @@ int main()
     } else {
         printf("Saindo do programa...\n");
     }
-
-    // teste
+    
 
     return 0;
 }
