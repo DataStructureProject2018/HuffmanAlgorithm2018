@@ -23,7 +23,7 @@ int main()
     } else {
         printf("Saindo do programa...\n");
     }
-
+printf("rola");
 
     return 0;
 }
