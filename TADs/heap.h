@@ -184,4 +184,9 @@ void print_heap_as_tree(HeapNode *tree) {
 
 }
 
+// TODO check
+int check_leaf(HeapNode *tree) {
+    return (!tree->left && !tree->right);
+}
+
 #endif //HUFFMAN_HEAP_H
