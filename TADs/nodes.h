@@ -11,6 +11,8 @@
 // Node usado na hashTable
 typedef struct hashNode {
     long int frequency;
+    short int compressed;
+    short int compressed_len;
     unsigned char byte;
 } HashNode;
 
@@ -28,6 +30,8 @@ HashNode *create_hashNode(unsigned char byte) {
     HashNode *new_node = (HashNode *)malloc(sizeof(HashNode));
     new_node->byte = byte;
     new_node->frequency = 1;
+    new_node->compressed = 0;
+    new_node->compressed_len = 0;
 
     return new_node;
 
