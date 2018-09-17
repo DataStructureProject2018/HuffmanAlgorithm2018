@@ -51,6 +51,7 @@ void start_compression() {
 
     print_heap_as_tree(heap->data[1]);
 
+    printf("\n");
     fclose(in);
 
 }
