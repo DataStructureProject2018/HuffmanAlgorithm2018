@@ -12,40 +12,36 @@ int is_bit_i_set(unsigned char c, int i){
     unsigned char mask = 1 << i;
     return mask & c;
 }
-int extractTrashAndTreeSize(FILE *arquivo){ //gets the size of: tree and trash
+int *extractTrashAndTreeSize(FILE *arquivo){ //gets the size of: tree and trash
 
     unsigned char c;
     int lixo = 0, tree = 0, bit, i; // bit will receive the value of the searched bit
     fread(&c, sizeof(c), 1, arquivo); //reads the first character and c receives it
-    for(i = 7; i >= 0; i--){
+    for(i = 7; i >= 0; i--) {
         bit = is_bit_i_set(c, i);
         if(i > 4){
             if(bit == 0){
-                lixo = lixo << 1;
-            }
-            else{
-                lixo  = lixo << 1;
+                lixo <<= 1;
+            } else {
+                lixo <<= 1;
                 lixo++;
             }
-        }
-        else{
+        } else {
             if(bit == 0){
-                tree = tree << 1;
-            }
-            else{
-                tree  = tree << 1;
+                tree <<= 1;
+            } else {
+                tree <<= 1;
                 tree++;
             }
         }
     }
     fread(&c, sizeof(c), 1, arquivo); //reads the second character and c receives it
-    for(i = 7; i >= 0; i--){
+    for(i = 7; i >= 0; i--) {
         bit = is_bit_i_set(c, i);
-        if(bit == 0){
-            tree = tree << 1;
-        }
-        else{
-            tree = tree << 1;
+        if(bit == 0) {
+            tree <<= 1;
+        } else {
+            tree <<= 1;
             tree++;
         }
     }

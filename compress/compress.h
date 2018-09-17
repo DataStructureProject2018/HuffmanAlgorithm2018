@@ -27,6 +27,67 @@ HashTable *get_frequency(FILE *in) {
     return ht;
 }
 
+unsigned int getTreeSize(HeapNode *tree, unsigned int cont) {
+
+    HeapNode *current = tree;
+    if(current != NULL) {
+        cont++;
+        if(check_leaf(current)) {
+            if(current->byte == '\\' || current->byte == '*') {
+                cont++;
+            }
+        }
+        cont = getTreeSize(current->left, cont);
+        cont = getTreeSize(current->right, cont);
+    }
+    return cont;
+
+}
+
+
+unsigned long totalBits(HashTable *ht) {
+
+    unsigned long  total = 0;
+    int i;
+
+    for(i = 0; i < MAX_TABLE_SIZE; i++) {
+        if(ht->table[i]) {
+            total += (ht->table[i]->frequency * ht->table[i]->compressed_len);
+        }
+    }
+
+    return total%8;
+}
+
+void createBits(HeapNode *tree, HashTable *ht, unsigned short int bits, unsigned short int len) {
+
+    HeapNode *current = tree;
+    if(current) {
+        printf("byte: %c\n", current->byte);
+        if(check_leaf(current)) {
+            printf("Inserting %c\n", current->byte);
+            int key = create_key(current->byte);
+            ht->table[key]->compressed = bits;
+            ht->table[key]->compressed_len = len;
+        }
+        len++;
+        bits <<= 1;
+        createBits(current->left, ht, bits, len);
+        bits++;
+        createBits(current->right, ht, bits, len);
+    }
+
+}
+
+// TODO UNFINISHED
+void createTwoFirstBytes(HashTable *ht, unsigned int treeSize) {
+    unsigned char trashSize = (unsigned char) (8 - (totalBits(ht) % 8));
+
+
+
+    printf("Lixo: %d\tArvore: %d\n", trashSize, treeSize);
+}
+
 void start_compression() {
 
     FILE *in = fopen("../teste.txt", "rb");
@@ -50,6 +111,12 @@ void start_compression() {
     }
 
     print_heap_as_tree(heap->data[1]);
+
+    createBits(heap->data[1], ht, 0, 0);
+
+    print_table(ht);
+
+    createTwoFirstBytes(ht, getTreeSize(heap->data[1], 0));
 
     fclose(in);
 
