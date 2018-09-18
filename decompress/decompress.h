@@ -7,11 +7,8 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-int is_bit_i_set(unsigned char c, int i){
+#include "../TADs/utilities.h"
 
-    unsigned char mask = 1 << i;
-    return mask & c;
-}
 int *extractTrashAndTreeSize(FILE *arquivo){ //gets the size of: tree and trash
 
     unsigned char c;
@@ -55,7 +52,7 @@ void start_decompression() {
     FILE *arquivo;
     int *array;
 
-    arquivo = fopen("../teste.txt", "r");
+    arquivo = fopen("../testedcp.huff", "rb");
 
     array = extractTrashAndTreeSize(arquivo);
     printf("lixo: %d e tree %d", array[0], array[1]);

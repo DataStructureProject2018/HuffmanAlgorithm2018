@@ -10,6 +10,7 @@
 
 #include "../TADs/hash_table.h"
 #include "../TADs/heap.h"
+#include "../TADs/utilities.h"
 
 // Percorre o arquivo completamento e adiciona os caracteres na hashTable
 HashTable *get_frequency(FILE *in) {
@@ -45,9 +46,9 @@ unsigned int getTreeSize(HeapNode *tree, unsigned int cont) {
 }
 
 
-unsigned long totalBits(HashTable *ht) {
+unsigned char totalBits(HashTable *ht) {
 
-    unsigned long  total = 0;
+    unsigned long total = 0;
     int i;
 
     for(i = 0; i < MAX_TABLE_SIZE; i++) {
@@ -59,7 +60,7 @@ unsigned long totalBits(HashTable *ht) {
     return total%8;
 }
 
-void createBits(HeapNode *tree, HashTable *ht, unsigned short int bits, unsigned short int len) {
+void createBits(HeapNode *tree, HashTable *ht, unsigned short bits, unsigned char len) {
 
     HeapNode *current = tree;
     if(current) {
@@ -80,12 +81,20 @@ void createBits(HeapNode *tree, HashTable *ht, unsigned short int bits, unsigned
 }
 
 // TODO UNFINISHED
-void createTwoFirstBytes(HashTable *ht, unsigned int treeSize) {
-    unsigned char trashSize = (unsigned char) (8 - (totalBits(ht) % 8));
+void createTwoFirstBytes(HashTable *ht, unsigned int treeSize, FILE *in) {
 
-
-
+    unsigned char trashSize = (unsigned char) (8 - totalBits(ht));
     printf("Lixo: %d\tArvore: %d\n", trashSize, treeSize);
+
+    unsigned short aux = trashSize;
+    aux <<= 13;
+    aux ^= treeSize;
+
+    printf("aux: %d\n", aux);
+    unsigned char second = aux, first = aux >> 8;
+    // TODO mudar para fprintf
+    printf("%d %d\n", first, second);
+
 }
 
 void start_compression() {
@@ -116,7 +125,7 @@ void start_compression() {
 
     print_table(ht);
 
-    createTwoFirstBytes(ht, getTreeSize(heap->data[1], 0));
+    createTwoFirstBytes(ht, getTreeSize(heap->data[1], 0), in);
 
     fclose(in);
 
