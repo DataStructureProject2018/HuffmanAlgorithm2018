@@ -12,7 +12,7 @@
 typedef struct hashNode {
     long int frequency;
     short int compressed;
-    short int compressed_len;
+    unsigned char compressed_len;
     unsigned char byte;
 } HashNode;
 
