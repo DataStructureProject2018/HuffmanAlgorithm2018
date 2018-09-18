@@ -47,7 +47,7 @@ unsigned int getTreeSize(HeapNode *tree, unsigned int cont) {
 
 unsigned long totalBits(HashTable *ht) {
 
-    unsigned long  total = 0;
+    unsigned long total = 0;
     int i;
 
     for(i = 0; i < MAX_TABLE_SIZE; i++) {
@@ -80,8 +80,12 @@ void createBits(HeapNode *tree, HashTable *ht, unsigned short int bits, unsigned
 }
 
 // TODO UNFINISHED
-void createTwoFirstBytes(HashTable *ht, unsigned int treeSize) {
-    unsigned char trashSize = (unsigned char) (8 - (totalBits(ht) % 8));
+void createTwoFirstBytes(HashTable *ht, unsigned int treeSize, FILE *in) {
+    unsigned char trashSize = (unsigned char) (8 - totalBits(ht));
+    unsigned char byte;
+
+    fread(&byte, sizeof(byte), 1, in);
+
 
 
 
