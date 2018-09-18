@@ -7,12 +7,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-
-int is_bit_i_set(unsigned char c, int i){
-
-    unsigned char mask = 1 << i;
-    return mask & c;
-}
+#include "../TADs/utilities.h"
 
 int *extractTrashAndTreeSize(FILE *arquivo){ //gets the size of: tree and trash
 
@@ -50,11 +45,8 @@ int *extractTrashAndTreeSize(FILE *arquivo){ //gets the size of: tree and trash
     int *array = (int *)malloc(sizeof(int) * 2);
     array[0] = lixo;
     array[1] = tree;
-
     return array;
-
 }
-
 void start_decompression() {
 
     FILE *arquivo;

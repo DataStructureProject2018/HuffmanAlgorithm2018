@@ -7,12 +7,11 @@
 #include "./decompress/decompress.h"
 #include "./TADs/heap.h"
 
-
 int main()
 {
     int opcao;
 
-    printf("Digite sua opção:\n(1) Comprimir\n(2) Descomprimir\n(Outro) Sair\n");
+    printf("Digite sua escolha:\n(1) Comprimir\n(2) Descomprimir\n(Outro) Sair\n");
 
     scanf("%d", &opcao);
 
