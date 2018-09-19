@@ -32,7 +32,7 @@ typedef struct treeNode {
 } TreeNode;
 
 // Cria um novo node para a arvore
-TreeNode *create_new_node(unsigned char byte){
+TreeNode *create_node(unsigned char byte){
 
     TreeNode *new_node = (TreeNode *) malloc(sizeof(TreeNode));
     new_node->byte = byte;

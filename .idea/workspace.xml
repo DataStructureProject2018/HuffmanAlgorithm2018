@@ -11,14 +11,10 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="55765b6e-dacd-4bc2-a9fe-92f83b7fdfc5" name="Default Changelist" comment="update">
-      <change afterPath="$PROJECT_DIR$/TADs/tree.h" afterDir="false" />
+    <list default="true" id="55765b6e-dacd-4bc2-a9fe-92f83b7fdfc5" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TADs/hash_table.h" beforeDir="false" afterPath="$PROJECT_DIR$/TADs/hash_table.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TADs/heap.h" beforeDir="false" afterPath="$PROJECT_DIR$/TADs/heap.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TADs/nodes.h" beforeDir="false" afterPath="$PROJECT_DIR$/TADs/nodes.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/compress/compress.h" beforeDir="false" afterPath="$PROJECT_DIR$/compress/compress.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TADs/tree.h" beforeDir="false" afterPath="$PROJECT_DIR$/TADs/tree.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/decompress/decompress.h" beforeDir="false" afterPath="$PROJECT_DIR$/decompress/decompress.h" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
@@ -72,23 +68,24 @@
     <session id="2049344694">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="1" />
+          <entry key="project.closed" value="2" />
           <entry key="project.open.time.15" value="1" />
+          <entry key="project.open.time.27" value="1" />
           <entry key="project.open.time.40" value="1" />
-          <entry key="project.opened" value="2" />
+          <entry key="project.opened" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="c" value="13" />
           <entry key="gitignore" value="2" />
-          <entry key="h" value="404" />
+          <entry key="h" value="1031" />
           <entry key="txt" value="6" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="ObjectiveC" value="417" />
+          <entry key="ObjectiveC" value="1044" />
           <entry key="PLAIN_TEXT" value="8" />
         </counts>
       </usages-collector>
@@ -138,8 +135,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/decompress/decompress.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="154">
-              <caret line="56" lean-forward="true" selection-start-line="56" selection-end-line="56" />
+            <state relative-caret-position="262">
+              <caret line="74" column="20" lean-forward="true" selection-start-line="74" selection-start-column="20" selection-end-line="74" selection-end-column="20" />
               <folding>
                 <element signature="e#101#119#0" expanded="true" />
               </folding>
@@ -150,8 +147,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/TADs/tree.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="10" selection-start-line="10" selection-end-line="10" />
+            <state relative-caret-position="984">
+              <caret line="41" column="19" selection-start-line="41" selection-start-column="19" selection-end-line="41" selection-end-column="19" />
               <folding>
                 <element signature="e#106#124#0" expanded="true" />
               </folding>
@@ -162,8 +159,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/TADs/nodes.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="936">
-              <caret line="39" column="26" selection-start-line="39" selection-start-column="26" selection-end-line="39" selection-end-column="26" />
+            <state relative-caret-position="816">
+              <caret line="34" column="39" selection-start-line="34" selection-start-column="35" selection-end-line="34" selection-end-column="39" />
               <folding>
                 <element signature="e#91#109#0" expanded="true" />
               </folding>
@@ -216,8 +213,8 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="487" />
-    <option name="y" value="-17" />
+    <option name="x" value="380" />
+    <option name="y" value="-25" />
     <option name="width" value="1346" />
     <option name="height" value="688" />
   </component>
@@ -293,7 +290,8 @@
       <workItem from="1536596379419" duration="8375000" />
       <workItem from="1537134522371" duration="2271000" />
       <workItem from="1537186904298" duration="7371000" />
-      <workItem from="1537224661566" duration="232000" />
+      <workItem from="1537224661566" duration="4852000" />
+      <workItem from="1537384692407" duration="230000" />
     </task>
     <task id="LOCAL-00001" summary="pfv vai">
       <created>1536594973901</created>
@@ -351,11 +349,25 @@
       <option name="project" value="LOCAL" />
       <updated>1537136219499</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="update">
+      <created>1537224925838</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1537224925838</updated>
+    </task>
+    <task id="LOCAL-00010" summary="update">
+      <created>1537225059984</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1537225059984</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="24230000" />
+    <option name="totallyTimeSpent" value="28850000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -368,20 +380,21 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26066098" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.53501093" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.35140997" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.35140997" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3991684" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32952183" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Messages" order="8" weight="0.3275488" />
-      <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.49946696" weight="0.32952183" />
+      <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.49946696" weight="0.3286334" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5010661" side_tool="true" weight="0.32952183" />
       <window_info anchor="bottom" id="Version Control" order="11" sideWeight="0.4989339" weight="0.27338877" />
       <window_info anchor="bottom" id="CMake" order="12" weight="0.32851985" />
@@ -464,8 +477,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/TADs/tree.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="10" selection-start-line="10" selection-end-line="10" />
+        <state relative-caret-position="984">
+          <caret line="41" column="19" selection-start-line="41" selection-start-column="19" selection-end-line="41" selection-end-column="19" />
           <folding>
             <element signature="e#106#124#0" expanded="true" />
           </folding>
@@ -474,8 +487,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/TADs/nodes.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="936">
-          <caret line="39" column="26" selection-start-line="39" selection-start-column="26" selection-end-line="39" selection-end-column="26" />
+        <state relative-caret-position="816">
+          <caret line="34" column="39" selection-start-line="34" selection-start-column="35" selection-end-line="34" selection-end-column="39" />
           <folding>
             <element signature="e#91#109#0" expanded="true" />
           </folding>
@@ -498,8 +511,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/decompress/decompress.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="56" lean-forward="true" selection-start-line="56" selection-end-line="56" />
+        <state relative-caret-position="262">
+          <caret line="74" column="20" lean-forward="true" selection-start-line="74" selection-start-column="20" selection-end-line="74" selection-end-column="20" />
           <folding>
             <element signature="e#101#119#0" expanded="true" />
           </folding>

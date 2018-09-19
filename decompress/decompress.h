@@ -7,6 +7,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include "../TADs/tree.h"
 
 int is_bit_i_set(unsigned char c, int i){
 
@@ -55,16 +56,21 @@ int *extractTrashAndTreeSize(FILE *arquivo){ //gets the size of: tree and trash
 
 }
 
+
 void start_decompression() {
 
+    TreeNode *tree = NULL;
     FILE *arquivo;
     int *array;
 
     arquivo = fopen("../testedcp.huff", "rb");
 
     array = extractTrashAndTreeSize(arquivo);
-    printf("lixo: %d e tree %d", array[0], array[1]);
+    printf("lixo: %d e tree %d\n", array[0], array[1]);
+    tree = make_tree(arquivo, array[1], tree);
     fclose(arquivo);
+    printf_tree(tree);
+//    printf("\ntree size %d\n", array[1]);
 
 //    if (arquivo) {
 //        while(!feof(arquivo)) {
