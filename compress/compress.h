@@ -97,6 +97,7 @@ void createTwoFirstBytes(HashTable *ht, unsigned int treeSize, FILE *in) {
 
 }
 
+
 void start_compression() {
 
     FILE *in = fopen("../teste.txt", "rb");
@@ -119,13 +120,15 @@ void start_compression() {
         print_heap(heap);
     }
 
-    print_heap_as_tree(heap->data[1]);
 
     createBits(heap->data[1], ht, 0, 0);
 
     print_table(ht);
 
     createTwoFirstBytes(ht, getTreeSize(heap->data[1], 0), in);
+
+    printf("Printando arvore:\n");
+    print_heap_as_tree(heap->data[1]);
 
     fclose(in);
 
