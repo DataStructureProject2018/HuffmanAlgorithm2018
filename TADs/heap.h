@@ -177,7 +177,11 @@ void print_heap(Heap *heap) {
 void print_heap_as_tree(HeapNode *tree) {
 
     if(tree) {
+        if(tree->byte == '\\' || (tree->byte == '*' && !tree->left)) {
+            printf("\\");
+        }
         printf("%c", tree->byte);
+
         print_heap_as_tree(tree->left);
         print_heap_as_tree(tree->right);
     }

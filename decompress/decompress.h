@@ -8,12 +8,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "../TADs/tree.h"
-
-int is_bit_i_set(unsigned char c, int i){
-
-    unsigned char mask = 1 << i;
-    return mask & c;
-}
+#include "../TADs/utilities.h"
 
 int *extractTrashAndTreeSize(FILE *arquivo){ //gets the size of: tree and trash
 
@@ -117,6 +112,7 @@ void start_decompression() {
 
     arquivo = fopen("../testedcp.huff", "rb");
     newFile = fopen("../decompressedfile", "wb");
+
 
     fseek(arquivo, 0, SEEK_END); //arquivo will now point to the end of the file
 
