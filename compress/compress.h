@@ -152,7 +152,7 @@ void compress_bytes(HashTable *ht, FILE *in, FILE *out, unsigned char trashSize)
 
 void start_compression() {
 
-    FILE *in = fopen("../dj.jpg", "rb");
+    FILE *in = fopen("../teste.txt", "rb");
     FILE *out = fopen("../compressed.huff", "wb");
 
     HashTable *ht = get_frequency(in);
