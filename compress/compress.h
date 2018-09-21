@@ -28,7 +28,7 @@ HashTable *get_frequency(FILE *in) {
     return ht;
 }
 
-unsigned short getTreeSize(HeapNode *tree, unsigned short cont) {
+unsigned int getTreeSize(HeapNode *tree, unsigned int cont) {
 
     HeapNode *current = tree;
     if(current != NULL) {
@@ -81,7 +81,7 @@ void createBits(HeapNode *tree, HashTable *ht, unsigned short bits, unsigned cha
 }
 
 // TODO UNFINISHED
-void createTwoFirstBytes(HashTable *ht, unsigned short treeSize, FILE *in) {
+void createTwoFirstBytes(HashTable *ht, unsigned int treeSize, FILE *in) {
 
     unsigned char trashSize = (unsigned char) (8 - totalBits(ht));
     printf("Lixo: %d\tArvore: %d\n", trashSize, treeSize);
@@ -97,24 +97,6 @@ void createTwoFirstBytes(HashTable *ht, unsigned short treeSize, FILE *in) {
 
 }
 
-void compress_bytes(HashTable *ht, FILE *in, unsigned short treeSize){
-
-    unsigned char byte, byte_to_print = 0, compressed_byte_len;
-    unsigned short actual_len, compressed_byte;
-
-    while(!feof(in)) {
-        fread(&byte, sizeof(byte), 1, in);
-        if(!feof(in)){
-            compressed_byte = ht->table[byte]->compressed;
-            compressed_byte_len = ht->table[byte]->compressed_len;
-        }
-    }
-
-
-
-
-
-}
 
 void start_compression() {
 
@@ -138,14 +120,15 @@ void start_compression() {
         print_heap(heap);
     }
 
-    print_heap_as_tree(heap->data[1]);
 
     createBits(heap->data[1], ht, 0, 0);
 
     print_table(ht);
 
-    unsigned short treeSize = getTreeSize(heap->data[1], 0);
-    createTwoFirstBytes(ht, treeSize, in);
+    createTwoFirstBytes(ht, getTreeSize(heap->data[1], 0), in);
+
+    printf("Printando arvore:\n");
+    print_heap_as_tree(heap->data[1]);
 
     fclose(in);
 
