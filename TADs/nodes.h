@@ -24,6 +24,25 @@ typedef struct heapNode {
     struct heapNode *right;
 } HeapNode;
 
+// Node usado na arvore
+typedef struct treeNode {
+    unsigned char byte;
+    struct treeNode *right;
+    struct treeNode *left;
+} TreeNode;
+
+// Cria um novo node para a arvore
+TreeNode *create_node(unsigned char byte){
+
+    TreeNode *new_node = (TreeNode *) malloc(sizeof(TreeNode));
+    new_node->byte = byte;
+    new_node->right = NULL;
+    new_node->left = NULL;
+
+    return new_node;
+
+}
+
 // Cria um novo node para a hashTable com frequencia 1
 HashNode *create_hashNode(unsigned char byte) {
 

@@ -67,20 +67,25 @@
     <session id="2049344694">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
+          <entry key="project.closed" value="3" />
           <entry key="project.open.time.15" value="1" />
-          <entry key="project.opened" value="1" />
+          <entry key="project.open.time.27" value="1" />
+          <entry key="project.open.time.34" value="1" />
+          <entry key="project.open.time.40" value="1" />
+          <entry key="project.opened" value="4" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="c" value="13" />
           <entry key="gitignore" value="2" />
+          <entry key="h" value="3015" />
           <entry key="txt" value="6" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="ObjectiveC" value="13" />
+          <entry key="ObjectiveC" value="3028" />
           <entry key="PLAIN_TEXT" value="8" />
         </counts>
       </usages-collector>
@@ -152,8 +157,11 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/teste.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="21" selection-start-column="21" selection-end-column="21" />
+            <state relative-caret-position="3000">
+              <caret line="120" column="75" lean-forward="true" selection-start-line="120" selection-start-column="75" selection-end-line="120" selection-end-column="75" />
+              <folding>
+                <element signature="e#101#119#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -163,7 +171,7 @@
           <provider selected="true" editor-type-id="text-editor">
             <state>
               <folding>
-                <element signature="e#101#119#0" expanded="true" />
+                <element signature="e#106#124#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -271,7 +279,7 @@
     <property name="last_opened_file_path" value="$USER_HOME$/Desktop/DataStructure_Project-master/huffman" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -471,10 +479,10 @@
     <option name="LAST_COMMIT_MESSAGE" value="Print Tree" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/.gitignore">
+    <entry file="file://$PROJECT_DIR$/TADs/hash_table.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="25">
-          <caret line="1" column="21" selection-start-line="1" selection-start-column="21" selection-end-line="1" selection-end-column="21" />
+        <state relative-caret-position="1525">
+          <caret line="63" column="5" selection-start-line="63" selection-start-column="5" selection-end-line="63" selection-end-column="5" />
         </state>
       </provider>
     </entry>
@@ -516,7 +524,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <folding>
-            <element signature="e#101#119#0" expanded="true" />
+            <element signature="e#91#109#0" expanded="true" />
           </folding>
         </state>
       </provider>
