@@ -29,22 +29,15 @@ HashTable *create_table() {
 
 }
 
-// Retorna a chave do byte para a hashTable
-int create_key(unsigned char byte) {
-
-    return (int)byte;
-
-}
 
 // Insere um  byte na hashTable, caso ele já exista a sua frequência somente aumenta.
 HashTable *put(HashTable *ht, unsigned char byte) {
 
-    int key = create_key(byte);
 
-    if(ht->table[key]) {
-        ht->table[key]->frequency += 1;
+    if(ht->table[byte]) {
+        ht->table[byte]->frequency += 1;
     } else {
-        ht->table[key] = create_hashNode(byte);
+        ht->table[byte] = create_hashNode(byte);
     }
 
     return ht;
