@@ -77,7 +77,6 @@ void min_heapify(Heap *heap, int i) {
         smallest = rightIndex;
     }
 
-    // TODO Tem que ver esse if depois
     if(smallest != i) {
         swap_nodes(&heap->data[i], &heap->data[smallest]);
 
@@ -188,7 +187,6 @@ void print_heap_as_tree(HeapNode *tree, FILE *out) {
 
 }
 
-// TODO check
 int check_leaf(HeapNode *tree) {
     return (!tree->left && !tree->right);
 }

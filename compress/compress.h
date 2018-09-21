@@ -8,12 +8,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
+#include <string.h>
 
 #include "../TADs/hash_table.h"
 #include "../TADs/heap.h"
 #include "../TADs/utilities.h"
-
-
 
 unsigned short getTreeSize(HeapNode *tree, unsigned short cont) {
 
@@ -51,12 +50,9 @@ void createBits(HeapNode *tree, HashTable *ht, unsigned short bits, unsigned cha
 
     HeapNode *current = tree;
     if(current) {
-//        printf("byte: %c\n", current->byte);
         if(check_leaf(current)) {
-//            printf("Inserting %c\n", current->byte);
-            int key = create_key(current->byte);
-            ht->table[key]->compressed = bits;
-            ht->table[key]->compressed_len = len;
+            ht->table[current->byte]->compressed = bits;
+            ht->table[current->byte]->compressed_len = len;
         }
         len++;
         bits <<= 1;
@@ -67,19 +63,15 @@ void createBits(HeapNode *tree, HashTable *ht, unsigned short bits, unsigned cha
 
 }
 
-// TODO UNFINISHED
 unsigned char createTwoFirstBytes(HashTable *ht, unsigned short treeSize, FILE *out) {
 
     unsigned char trashSize = (unsigned char) (8 - totalBits(ht));
-//    printf("Lixo: %d\tArvore: %d\n", trashSize, treeSize);
 
     unsigned short aux = trashSize;
     aux <<= 13;
     aux ^= treeSize;
 
-//    printf("aux: %d\n", aux);
     unsigned char second = aux, first = aux >> 8;
-    // TODO mudar para fprintf
     fprintf(out, "%c%c", first, second);
 
     return trashSize;
@@ -88,10 +80,8 @@ unsigned char createTwoFirstBytes(HashTable *ht, unsigned short treeSize, FILE *
 
 void compress_bytes(HashTable *ht, FILE *in, FILE *out, unsigned char trashSize){
 
-    int tam = 0, auxTamByte, tamByte = 0, i = 0;
     short int caractere = 0;
-    unsigned char auxByte = 0, byte;
-
+    unsigned char auxByte = 0, byte, tam = 0, auxTamByte, tamByte = 0, i = 0;
 
     while(!feof(in)){
 
@@ -111,18 +101,19 @@ void compress_bytes(HashTable *ht, FILE *in, FILE *out, unsigned char trashSize)
 
 
         if(auxTamByte < tamByte) {
-
             auxByte <<= auxTamByte;
             auxByte ^= caractere >> (tamByte - auxTamByte);
             i += tamByte - (tamByte - auxTamByte);
             fprintf(out, "%c", auxByte);
 
             if((8 - tamByte + auxTamByte) < 0) {
-                auxByte = caractere >> abs(8 - tamByte + auxTamByte); // - >>
+                auxByte = caractere >> abs(8 - tamByte + auxTamByte);
             } else {
-                auxByte = caractere << (8 - tamByte + auxTamByte); // - >>
+                auxByte = caractere << (8 - tamByte + auxTamByte);
             }
+
             i += 8 - (8 - tamByte + auxTamByte);
+
             tam = (tamByte - auxTamByte) - abs(8 - tamByte + auxTamByte);
 
             if(tam != 8) {
@@ -134,57 +125,47 @@ void compress_bytes(HashTable *ht, FILE *in, FILE *out, unsigned char trashSize)
                 auxByte >>= (8 - (tamByte - 8 - auxTamByte));
                 tam = tamByte - 8 - auxTamByte;
             }
-
         } else {
-
             auxByte <<= tamByte;
-            auxByte += caractere;
+            auxByte ^= caractere;
             tam += tamByte;
             i += tamByte;
-
         }
-
     }
-
-
 }
-
 
 void start_compression() {
 
-    FILE *in = fopen("../dj.jpg", "rb");
+    char fileName[255] = "../", dir[255];
+
+    printf("Type file name: ");
+    scanf("%s", dir);
+    strcat(fileName, dir);
+
+    FILE *in = fopen(fileName, "rb");
     FILE *out = fopen("../compressed.huff", "wb");
 
     HashTable *ht = get_frequency(in);
 
-//    print_table(ht);
-
-//    printf("Printando a Heap:\n");
-
     Heap *heap = create_heap();
     heap = ht_to_heap(ht, heap);
-
-//    print_heap(heap);
 
     int i = 1;
     while(heap->size > 1 || i == 1){
         remove_node(heap);
         i++;
-//        print_heap(heap);
     }
 
-
     createBits(heap->data[1], ht, 0, 0);
-
-//    print_table(ht);
 
     unsigned short treeSize = getTreeSize(heap->data[1], 0);
     unsigned char trashSize = createTwoFirstBytes(ht, treeSize, out);
 
-//    printf("Printando arvore:\n");
     print_heap_as_tree(heap->data[1], out);
     fseek(in, 0, SEEK_SET);
     compress_bytes(ht, in, out, trashSize);
+
+    destroy_table(ht);
 
     fclose(in);
     fclose(out);
