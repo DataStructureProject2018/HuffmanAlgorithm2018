@@ -110,7 +110,7 @@ void start_decompression() {
     FILE *arquivo, *newFile;
     int *array;
 
-    arquivo = fopen("../testedcp.huff", "rb");
+    arquivo = fopen("../compressed.huff", "rb");
     newFile = fopen("../decompressedfile", "wb");
 
 
@@ -122,6 +122,7 @@ void start_decompression() {
     tree = make_tree(arquivo, array[1], tree);
     decompress_file(arquivo, fileSize, tree, array[1], array[0], newFile);
     fclose(arquivo);
+    fclose(newFile);
     printf("processo finalizado");
 
 }

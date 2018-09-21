@@ -174,16 +174,16 @@ void print_heap(Heap *heap) {
 
 }
 
-void print_heap_as_tree(HeapNode *tree) {
+void print_heap_as_tree(HeapNode *tree, FILE *out) {
 
     if(tree) {
         if(tree->byte == '\\' || (tree->byte == '*' && !tree->left)) {
-            printf("\\");
+            fprintf(out, "\\");
         }
-        printf("%c", tree->byte);
+        fprintf(out, "%c", tree->byte);
 
-        print_heap_as_tree(tree->left);
-        print_heap_as_tree(tree->right);
+        print_heap_as_tree(tree->left, out);
+        print_heap_as_tree(tree->right, out);
     }
 
 }

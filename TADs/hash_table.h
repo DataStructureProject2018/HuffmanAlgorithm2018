@@ -65,6 +65,22 @@ void print_table(HashTable *ht) {
 
 }
 
+// Percorre o arquivo completamento e adiciona os caracteres na hashTable
+HashTable *get_frequency(FILE *in) {
+
+    HashTable *ht = create_table();
+    unsigned char byte;
+
+    while(!feof(in)) {
+        fread(&byte, sizeof(byte), 1, in);
+        if(!feof(in)) {
+            ht = put(ht, byte);
+        }
+    }
+
+    return ht;
+}
+
 // Apaga a hashTable
 void destroy_table(HashTable *ht) {
 
