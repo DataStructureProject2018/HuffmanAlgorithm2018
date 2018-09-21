@@ -10,19 +10,38 @@
 
 // Node usado na hashTable
 typedef struct hashNode {
-    long int frequency;
-    short int compressed;
+    unsigned long int frequency;
+    unsigned short int compressed;
     unsigned char compressed_len;
     unsigned char byte;
 } HashNode;
 
 // Node usado na Heap
 typedef struct heapNode {
-    long int frequency;
+    unsigned long int frequency;
     unsigned char byte;
     struct heapNode *left;
     struct heapNode *right;
 } HeapNode;
+
+// Node usado na arvore
+typedef struct treeNode {
+    unsigned char byte;
+    struct treeNode *right;
+    struct treeNode *left;
+} TreeNode;
+
+// Cria um novo node para a arvore
+TreeNode *create_node(unsigned char byte){
+
+    TreeNode *new_node = (TreeNode *) malloc(sizeof(TreeNode));
+    new_node->byte = byte;
+    new_node->right = NULL;
+    new_node->left = NULL;
+
+    return new_node;
+
+}
 
 // Cria um novo node para a hashTable com frequencia 1
 HashNode *create_hashNode(unsigned char byte) {

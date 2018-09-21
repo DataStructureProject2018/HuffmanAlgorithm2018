@@ -6,7 +6,7 @@
 #include "./compress/compress.h"
 #include "./decompress/decompress.h"
 #include "./TADs/heap.h"
-
+// TODO Mudar o createkey =, ele não e necessario pq podemos usar o proprio byte como key
 int main()
 {
     int opcao;
@@ -22,7 +22,6 @@ int main()
     } else {
         printf("Saindo do programa...\n");
     }
-
 
     return 0;
 }
