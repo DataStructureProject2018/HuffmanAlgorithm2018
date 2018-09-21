@@ -20,6 +20,7 @@ TreeNode* make_tree(FILE *arquivo, int treeSize, TreeNode *tree){
     if(c != '*'){
         if(c == '\\'){
             fread(&c, sizeof(c), 1, arquivo);
+            treeSize--;
         }
         tree = create_node(c);
         treeSize--;

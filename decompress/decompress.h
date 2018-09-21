@@ -56,32 +56,78 @@ int *extractTrashAndTreeSize(FILE *arquivo){ //gets the size of: tree and trash
 
 }
 
+void decompress_file(FILE *arquivo, unsigned long fileSize, TreeNode *tree, int treeSize, int lixo, FILE *newFile){
+
+    TreeNode *treeRoot = tree; //saves the root of the tree
+    int i, bit;
+    unsigned char c;
+    unsigned long j = 0;
+
+    while(j < fileSize - 3 - treeSize){
+
+        fread(&c, sizeof(c), 1, arquivo);
+
+        for(i = 7; i >= 0 ; i--){
+
+            bit = is_bit_i_set(c, i);// bit will receive the value of the searched bit
+
+            if(bit > 0){
+                treeRoot = treeRoot->right;
+            }
+            else{
+                treeRoot = treeRoot->left;
+            }
+
+            if(treeRoot->right == NULL && treeRoot->left == NULL){// if a leaf is found
+                fprintf(newFile, "%c", treeRoot->byte);//write data into file
+                treeRoot = tree; // returning to the root
+            }
+        }
+        j++;
+    }
+
+    fread(&c, sizeof(c), 1, arquivo); //giving c the last byte
+
+    for(i = 7; i >= 0 + lixo; i--){ //last byte operation
+
+        bit = is_bit_i_set(c, i);// bit will receive the value of the searched bit
+
+        if(bit > 0){ //
+            treeRoot = treeRoot->right;
+        }
+        else{
+            treeRoot = treeRoot->left;
+        }
+
+        if(treeRoot->right == NULL && treeRoot->left == NULL){// if a leaf is found
+            fprintf(newFile, "%c", treeRoot->byte);//write data into file
+            treeRoot = tree; // returning to the root
+        }
+    }
+
+    //end of function
+}
+
 
 void start_decompression() {
 
     TreeNode *tree = NULL;
-    FILE *arquivo;
+    FILE *arquivo, *newFile;
     int *array;
 
     arquivo = fopen("../testedcp.huff", "rb");
+    newFile = fopen("../decompressedfile", "wb");
 
+    fseek(arquivo, 0, SEEK_END); //arquivo will now point to the end of the file
+
+    unsigned long fileSize = ftell(arquivo);
+    fseek(arquivo, 0, SEEK_SET);
     array = extractTrashAndTreeSize(arquivo);
-    printf("lixo: %d e tree %d\n", array[0], array[1]);
     tree = make_tree(arquivo, array[1], tree);
+    decompress_file(arquivo, fileSize, tree, array[1], array[0], newFile);
     fclose(arquivo);
-    printf_tree(tree);
-//    printf("\ntree size %d\n", array[1]);
+    printf("processo finalizado");
 
-//    if (arquivo) {
-//        while(!feof(arquivo)) {
-//            fread(&c, sizeof(c), 1, arquivo);
-//            if(!feof(arquivo)) {
-//                printf("%c", c);
-//            }
-//        }
-//
-//        fclose(arquivo);
-//    }
 }
 
 #endif //HUFFMAN_DECOMPRESS_H
