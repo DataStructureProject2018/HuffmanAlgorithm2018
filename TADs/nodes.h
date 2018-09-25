@@ -56,7 +56,7 @@ HashNode *create_hashNode(unsigned char byte) {
 
 }
 
-HeapNode *create_heapNode(unsigned char byte, long int frequency) {
+HeapNode *create_heapNode(unsigned char byte, unsigned long frequency) {
 
     HeapNode *new_node = (HeapNode *)malloc(sizeof(HeapNode));
     new_node->byte = byte;
