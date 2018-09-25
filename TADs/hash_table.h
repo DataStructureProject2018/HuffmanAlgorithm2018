@@ -50,9 +50,9 @@ void print_table(HashTable *ht) {
     int i;
     for(i = 0; i < MAX_TABLE_SIZE; i += 1) {
         if(ht->table[i]) {
-            printf("#  %d # %ld # %c # %d # %d #\n", i, ht->table[i]->frequency, ht->table[i]->byte, ht->table[i]->compressed_len, ht->table[i]->compressed);
+            printf("#  %d # %ld # %c # %d # %d #\n", i, ht->table[i]->frequency, (unsigned char)ht->table[i]->byte, ht->table[i]->compressed_len, ht->table[i]->compressed);
         } else {
-            printf("#  %d  EMPTY  #\n", i);
+            //printf("#  %d  EMPTY  #\n", i);
         }
     }
 
