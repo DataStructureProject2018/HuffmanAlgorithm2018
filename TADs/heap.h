@@ -134,7 +134,7 @@ void add_node(Heap *heap, HeapNode *node) {
 }
 
 // Remove os 2 nodes com menor frequencia e adiciona um novo node com os nodes removidos
-void remove_node(Heap *heap) {
+Heap *remove_node(Heap *heap) {
 
     if(heap->size){
         HeapNode *node = create_heapNode('*', heap->data[1]->frequency);
@@ -158,6 +158,8 @@ void remove_node(Heap *heap) {
 
         add_node(heap, node);
     }
+
+    return heap;
 
 }
 
@@ -188,7 +190,21 @@ void print_heap_as_tree(HeapNode *tree, FILE *out) {
 }
 
 int check_leaf(HeapNode *tree) {
+
     return (!tree->left && !tree->right);
+
+}
+
+Heap *createHuffTree(Heap *heap) {
+
+    int i = 1;
+    while(heap->size > 1 || i == 1){
+        heap = remove_node(heap);
+        i++;
+    }
+
+    return heap;
+
 }
 
 #endif //HUFFMAN_HEAP_H
