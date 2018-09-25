@@ -20,7 +20,7 @@ unsigned short getTreeSize(HeapNode *tree, unsigned short cont) {
     if(current != NULL) {
         cont++;
         if(check_leaf(current)) {
-            if(current->byte == '\\' || current->byte == '*') {
+            if((unsigned char)current->byte == '\\' || (unsigned char)current->byte == '*') {
                 cont++;
             }
         }
@@ -51,8 +51,8 @@ void createBits(HeapNode *tree, HashTable *ht, unsigned short bits, unsigned cha
     HeapNode *current = tree;
     if(current) {
         if(check_leaf(current)) {
-            ht->table[current->byte]->compressed = bits;
-            ht->table[current->byte]->compressed_len = len;
+            ht->table[(unsigned char)current->byte]->compressed = bits;
+            ht->table[(unsigned char)current->byte]->compressed_len = len;
         }
         len++;
         bits <<= 1;

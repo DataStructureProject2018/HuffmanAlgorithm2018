@@ -167,21 +167,21 @@ void print_heap(Heap *heap) {
 
     int i = 1;
     while(i < heap->size){
-        printf("(%c , %ld) | ", heap->data[i]->byte, heap->data[i]->frequency);
+        printf("(%c , %ld) | ", (unsigned char)heap->data[i]->byte, heap->data[i]->frequency);
         i++;
     }
 
-    printf("(%c , %ld)\n", heap->data[i]->byte, heap->data[i]->frequency);
+    printf("(%c , %ld)\n", (unsigned char)heap->data[i]->byte, heap->data[i]->frequency);
 
 }
 
 void print_heap_as_tree(HeapNode *tree, FILE *out) {
 
     if(tree) {
-        if(tree->byte == '\\' || (tree->byte == '*' && !tree->left)) {
+        if((unsigned char)tree->byte == '\\' || ((unsigned char)tree->byte == '*' && !tree->left)) {
             fprintf(out, "\\");
         }
-        fprintf(out, "%c", tree->byte);
+        fprintf(out, "%c", (unsigned char)tree->byte);
 
         print_heap_as_tree(tree->left, out);
         print_heap_as_tree(tree->right, out);
