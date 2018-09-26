@@ -12,8 +12,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="55765b6e-dacd-4bc2-a9fe-92f83b7fdfc5" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TADs/hash_table.h" beforeDir="false" afterPath="$PROJECT_DIR$/TADs/hash_table.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TADs/heap.h" beforeDir="false" afterPath="$PROJECT_DIR$/TADs/heap.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TADs/lista.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TADs/tree.h" beforeDir="false" afterPath="$PROJECT_DIR$/TADs/tree.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TADs/utilities.h" beforeDir="false" afterPath="$PROJECT_DIR$/TADs/utilities.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/compress/compress.h" beforeDir="false" afterPath="$PROJECT_DIR$/compress/compress.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/main.c" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -92,14 +97,15 @@
     <session id="565683069">
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="decompressedfile" value="1" />
+          <entry key="decompressedfile" value="3" />
           <entry key="h" value="2" />
+          <entry key="huff" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="ObjectiveC" value="2" />
-          <entry key="PLAIN_TEXT" value="1" />
+          <entry key="PLAIN_TEXT" value="4" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
@@ -116,7 +122,7 @@
       </usages-collector>
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="1" />
+          <entry key="project.closed" value="2" />
           <entry key="project.open.time.43" value="1" />
           <entry key="project.opened" value="1" />
         </counts>
@@ -137,8 +143,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/compress/compress.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="350">
-              <caret line="171" column="12" lean-forward="true" selection-start-line="171" selection-start-column="12" selection-end-line="171" selection-end-column="12" />
+            <state relative-caret-position="171">
+              <caret line="158" column="40" selection-start-line="158" selection-start-column="40" selection-end-line="158" selection-end-column="40" />
               <folding>
                 <element signature="e#97#115#0" expanded="true" />
               </folding>
@@ -191,21 +197,6 @@
               <item name="Huffman" type="b2602c69:ProjectViewProjectNode" />
               <item name="HuffmanAlgorithm2018" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="Huffman" type="b2602c69:ProjectViewProjectNode" />
-              <item name="HuffmanAlgorithm2018" type="462c0819:PsiDirectoryNode" />
-              <item name="compress" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Huffman" type="b2602c69:ProjectViewProjectNode" />
-              <item name="HuffmanAlgorithm2018" type="462c0819:PsiDirectoryNode" />
-              <item name="decompress" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Huffman" type="b2602c69:ProjectViewProjectNode" />
-              <item name="HuffmanAlgorithm2018" type="462c0819:PsiDirectoryNode" />
-              <item name="TADs" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -222,6 +213,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Julyana\Documents\P-c\HuffmanAlgorithm2018" />
       <recent name="C:\Users\paulo\CLionProjects\Huffman2018.1" />
     </key>
   </component>
@@ -358,7 +350,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="40693000" />
+    <option name="totallyTimeSpent" value="41709000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -371,7 +363,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.14599092" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -495,9 +486,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/decompressedfile">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
@@ -505,10 +493,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/decompressedfile">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/compressed.huff">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-9078" />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/compress/compress.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="350">
-          <caret line="171" column="12" lean-forward="true" selection-start-line="171" selection-start-column="12" selection-end-line="171" selection-end-column="12" />
+        <state relative-caret-position="171">
+          <caret line="158" column="40" selection-start-line="158" selection-start-column="40" selection-end-line="158" selection-end-column="40" />
           <folding>
             <element signature="e#97#115#0" expanded="true" />
           </folding>
