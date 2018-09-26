@@ -11,10 +11,4 @@ int is_bit_i_set(unsigned char c, int i){
     return mask & c;
 }
 
-int is_bit_i_set_SI(unsigned short int c, int i){
-
-    unsigned short int mask = 1 << i;
-    return mask & c;
-}
-
 #endif //HUFFMAN_UTILITIES_H
