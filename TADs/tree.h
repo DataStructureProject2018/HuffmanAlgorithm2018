@@ -9,24 +9,23 @@
 #include <stdlib.h>
 #include "./nodes.h"
 
-TreeNode* make_tree(FILE *arquivo, int treeSize, TreeNode *tree){
+TreeNode* make_tree(FILE *arquivo, int treeSize, TreeNode *tree) {
 
-    if(!treeSize){
+    if(!treeSize) {
         return tree;
     }
     unsigned char c;
     fread(&c, sizeof(c), 1, arquivo);
 
-    if(c != '*'){
-        if(c == '\\'){
+    if(c != '*') {
+        if(c == '\\') {
             fread(&c, sizeof(c), 1, arquivo);
             treeSize--;
         }
         tree = create_node(c);
         treeSize--;
         return tree;
-    }
-    else{
+    } else {
         tree = create_node(c);
         treeSize--;
         tree->left = make_tree(arquivo, treeSize, tree->left);
@@ -37,12 +36,22 @@ TreeNode* make_tree(FILE *arquivo, int treeSize, TreeNode *tree){
 
 }
 
-void printf_tree(TreeNode *tree){
+void print_tree(TreeNode *tree){
 
-    if(tree != NULL){
+    if(tree){
         printf("%c ", (unsigned char)tree->byte);
-        printf_tree(tree->left);
-        printf_tree(tree->right);
+        print_tree(tree->left);
+        print_tree(tree->right);
+    }
+
+}
+
+void destroy_tree(TreeNode *tree) {
+
+    if(tree) {
+        destroy_tree(tree->left);
+        destroy_tree(tree->right);
+        free(tree);
     }
 
 }
