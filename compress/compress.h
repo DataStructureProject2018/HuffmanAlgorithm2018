@@ -66,7 +66,7 @@ void compress_bytes(HashTable *ht, FILE *in, FILE *out, unsigned char trashSize)
             if(feof(in)) { // caso seja o final do arquivo apos lermos o ultimo
                 auxByte <<= trashSize; // colocamos o lixo no byte a ser printado
                 fprintf(out, "%c", auxByte); // printamos o ultimo byte
-                return; //saimos da funcao
+                return;
             }
             caractere = ht->table[byte]->compressed; // salvamos a versão comprimida do byte atual
             tamByte = ht->table[byte]->compressed_len; // salvamos a quantidade de bits que a versão comprimida possui
@@ -121,34 +121,48 @@ void start_compression() {
         printf("Failed to open %s\n", fileName);
         return;
     }
-    FILE *out = fopen("../compressed.huff", "wb");
+    strcat(fileName, ".huff");
+    FILE *out = fopen(fileName, "wb");
     if(!out) {
         printf("Failed to open the compressed file\n");
         return;
     }
-
+    printf("Getting bytes frequency...\n");
     HashTable *ht = get_frequency(in);
-
+    printf("Done...\n");
+    printf("Creating heap...\n");
     Heap *heap = create_heap();
+    printf("Done...\n");
+    printf("Transfering heap to HashTable...\n");
     heap = ht_to_heap(ht, heap);
-
+    printf("Done...\n");
+    printf("Creating HuffTree...\n");
     heap = createHuffTree(heap);
-
+    printf("Done...\n");
+    printf("Creating compressed bytes representation...\n");
     createBits(heap->data[1], ht, 0, 0);
-
+    printf("Done...\n");
+    printf("Getting tree size...\n");
     unsigned short treeSize = getTreeSize(heap->data[1], 0);
+    printf("Done...\n");
+    printf("Getting trash size...\n");
     unsigned char trashSize = createTwoFirstBytes(ht, treeSize, out);
-
+    printf("Done...\n");
+    printf("Printing tree in file...\n");
     print_heap_as_tree(heap->data[1], out);
+    printf("Done...\n");
     fseek(in, 0, SEEK_SET);
+    printf("Starting compression...\n");
     compress_bytes(ht, in, out, trashSize);
+    printf("Done...\n");
 
     destroy_table(ht);
     destroy_HuffTree(heap->data[1]);
     destroy_heap(heap);
 
     fclose(in);
-    fclose(out);
+    fclose(out);;
+    printf("Program finished, exiting now...\n");
 
 }
 
