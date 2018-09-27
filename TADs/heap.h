@@ -163,18 +163,6 @@ Heap *remove_node(Heap *heap) {
 
 }
 
-void print_heap(Heap *heap) {
-
-    int i = 1;
-    while(i < heap->size){
-        printf("(%c , %ld) | ", (unsigned char)heap->data[i]->byte, heap->data[i]->frequency);
-        i++;
-    }
-
-    printf("(%c , %ld)\n", (unsigned char)heap->data[i]->byte, heap->data[i]->frequency);
-
-}
-
 void print_heap_as_tree(HeapNode *tree, FILE *out) {
 
     if(tree) {
@@ -206,5 +194,62 @@ Heap *createHuffTree(Heap *heap) {
     return heap;
 
 }
+
+unsigned short getTreeSize(HeapNode *tree, unsigned short cont) {
+
+    HeapNode *current = tree;
+    if(current != NULL) {
+        cont++;
+        if(check_leaf(current)) {
+            if((unsigned char)current->byte == '\\' || (unsigned char)current->byte == '*') {
+                cont++;
+            }
+        }
+        cont = getTreeSize(current->left, cont);
+        cont = getTreeSize(current->right, cont);
+    }
+    return cont;
+
+}
+
+void createBits(HeapNode *tree, HashTable *ht, unsigned short bits, unsigned char len) {
+
+    HeapNode *current = tree;
+    if(current) {
+        if(check_leaf(current)) {
+            ht->table[(unsigned char)current->byte]->compressed = bits;
+            ht->table[(unsigned char)current->byte]->compressed_len = len;
+        }
+        len++;
+        bits <<= 1;
+        createBits(current->left, ht, bits, len);
+        bits++;
+        createBits(current->right, ht, bits, len);
+    }
+
+}
+
+void destroy_HuffTree(HeapNode *tree) {
+
+    if(tree) {
+        destroy_HuffTree(tree->left);
+        destroy_HuffTree(tree->right);
+        free(tree);
+    }
+
+}
+
+void destroy_heap(Heap *heap) {
+
+    int i;
+    for(i = 1; i < MAX_HEAP_SIZE; i++) {
+        if(heap->data[i]) {
+            free(heap->data[i]);
+        }
+    }
+
+    free(heap);
+
+};
 
 #endif //HUFFMAN_HEAP_H

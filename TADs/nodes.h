@@ -10,16 +10,16 @@
 
 // Node usado na hashTable
 typedef struct hashNode {
+    void *byte;
     unsigned long int frequency;
     unsigned short int compressed;
     unsigned char compressed_len;
-    void *byte;
 } HashNode;
 
 // Node usado na Heap
 typedef struct heapNode {
-    unsigned long int frequency;
     void *byte;
+    unsigned long int frequency;
     struct heapNode *left;
     struct heapNode *right;
 } HeapNode;

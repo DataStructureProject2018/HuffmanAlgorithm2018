@@ -14,23 +14,6 @@
 #include "../TADs/heap.h"
 #include "../TADs/utilities.h"
 
-unsigned short getTreeSize(HeapNode *tree, unsigned short cont) {
-
-    HeapNode *current = tree;
-    if(current != NULL) {
-        cont++;
-        if(check_leaf(current)) {
-            if((unsigned char)current->byte == '\\' || (unsigned char)current->byte == '*') {
-                cont++;
-            }
-        }
-        cont = getTreeSize(current->left, cont);
-        cont = getTreeSize(current->right, cont);
-    }
-    return cont;
-
-}
-
 
 unsigned char totalBits(HashTable *ht) {
 
@@ -44,23 +27,6 @@ unsigned char totalBits(HashTable *ht) {
     }
 
     return total%8;
-}
-
-void createBits(HeapNode *tree, HashTable *ht, unsigned short bits, unsigned char len) {
-
-    HeapNode *current = tree;
-    if(current) {
-        if(check_leaf(current)) {
-            ht->table[(unsigned char)current->byte]->compressed = bits;
-            ht->table[(unsigned char)current->byte]->compressed_len = len;
-        }
-        len++;
-        bits <<= 1;
-        createBits(current->left, ht, bits, len);
-        bits++;
-        createBits(current->right, ht, bits, len);
-    }
-
 }
 
 unsigned char createTwoFirstBytes(HashTable *ht, unsigned short treeSize, FILE *out) {
@@ -151,7 +117,15 @@ void start_compression() {
     strcat(fileName, dir);
 
     FILE *in = fopen(fileName, "rb");
+    if(!in) {
+        printf("Failed to open %s\n", fileName);
+        return;
+    }
     FILE *out = fopen("../compressed.huff", "wb");
+    if(!out) {
+        printf("Failed to open the compressed file\n");
+        return;
+    }
 
     HashTable *ht = get_frequency(in);
 
@@ -170,6 +144,8 @@ void start_compression() {
     compress_bytes(ht, in, out, trashSize);
 
     destroy_table(ht);
+    destroy_HuffTree(heap->data[1]);
+    destroy_heap(heap);
 
     fclose(in);
     fclose(out);
