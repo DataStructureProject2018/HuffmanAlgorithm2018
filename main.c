@@ -20,7 +20,7 @@ int main()
 
     int opcao;
 
-    printf("Digite sua escolha:\n(1) Comprimir\n(2) Descomprimir\n(Outro) Sair\n");
+    printf("Type your choice:\n(1) Compress\n(2) Decompress\n(Other) Quit\n");
 
     scanf("%d", &opcao);
 
