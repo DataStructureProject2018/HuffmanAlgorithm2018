@@ -51,12 +51,12 @@ int *extractTrashAndTreeSize(FILE *arquivo){ //gets the size of: tree and trash
 
 }
 
-void decompress_file(FILE *arquivo, unsigned long fileSize, TreeNode *tree, int treeSize, int lixo, FILE *newFile){
+void decompress_file(FILE *arquivo, unsigned long long fileSize, TreeNode *tree, int treeSize, int lixo, FILE *newFile){
 
     TreeNode *treeRoot = tree; //saves the root of the tree
     int i, bit;
     unsigned char c;
-    unsigned long j = 0;
+    unsigned long long j = 0;
 
     while(j < fileSize - 3 - treeSize){
 
@@ -80,7 +80,6 @@ void decompress_file(FILE *arquivo, unsigned long fileSize, TreeNode *tree, int 
         }
         j++;
     }
-
     fread(&c, sizeof(c), 1, arquivo); //giving c the last byte
 
     for(i = 7; i >= 0 + lixo; i--){ //last byte operation
@@ -115,8 +114,7 @@ void start_decompression() {
 
 
     fseek(arquivo, 0, SEEK_END); //arquivo will now point to the end of the file
-
-    unsigned long fileSize = ftell(arquivo);
+    unsigned long long fileSize = ftell(arquivo);
     fseek(arquivo, 0, SEEK_SET);
     array = extractTrashAndTreeSize(arquivo);
     tree = make_tree(arquivo, array[1], tree);
