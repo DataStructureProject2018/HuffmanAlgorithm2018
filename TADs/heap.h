@@ -134,7 +134,7 @@ void add_node(Heap *heap, HeapNode *node) {
 }
 
 // Remove os 2 nodes com menor frequencia e adiciona um novo node com os nodes removidos
-void remove_node(Heap *heap) {
+Heap *remove_node(Heap *heap) {
 
     if(heap->size){
         HeapNode *node = create_heapNode('*', heap->data[1]->frequency);
@@ -159,27 +159,29 @@ void remove_node(Heap *heap) {
         add_node(heap, node);
     }
 
+    return heap;
+
 }
 
 void print_heap(Heap *heap) {
 
     int i = 1;
     while(i < heap->size){
-        printf("(%c , %ld) | ", heap->data[i]->byte, heap->data[i]->frequency);
+        printf("(%c , %ld) | ", (unsigned char)heap->data[i]->byte, heap->data[i]->frequency);
         i++;
     }
 
-    printf("(%c , %ld)\n", heap->data[i]->byte, heap->data[i]->frequency);
+    printf("(%c , %ld)\n", (unsigned char)heap->data[i]->byte, heap->data[i]->frequency);
 
 }
 
 void print_heap_as_tree(HeapNode *tree, FILE *out) {
 
     if(tree) {
-        if(tree->byte == '\\' || (tree->byte == '*' && !tree->left)) {
+        if((unsigned char)tree->byte == '\\' || ((unsigned char)tree->byte == '*' && !tree->left)) {
             fprintf(out, "\\");
         }
-        fprintf(out, "%c", tree->byte);
+        fprintf(out, "%c", (unsigned char)tree->byte);
 
         print_heap_as_tree(tree->left, out);
         print_heap_as_tree(tree->right, out);
@@ -188,7 +190,21 @@ void print_heap_as_tree(HeapNode *tree, FILE *out) {
 }
 
 int check_leaf(HeapNode *tree) {
+
     return (!tree->left && !tree->right);
+
+}
+
+Heap *createHuffTree(Heap *heap) {
+
+    int i = 1;
+    while(heap->size > 1 || i == 1){
+        heap = remove_node(heap);
+        i++;
+    }
+
+    return heap;
+
 }
 
 #endif //HUFFMAN_HEAP_H

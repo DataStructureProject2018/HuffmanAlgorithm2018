@@ -74,7 +74,7 @@ void decompress_file(FILE *arquivo, unsigned long fileSize, TreeNode *tree, int 
             }
 
             if(treeRoot->right == NULL && treeRoot->left == NULL){// if a leaf is found
-                fprintf(newFile, "%c", treeRoot->byte);//write data into file
+                fprintf(newFile, "%c", (unsigned char)treeRoot->byte);//write data into file
                 treeRoot = tree; // returning to the root
             }
         }
@@ -95,7 +95,7 @@ void decompress_file(FILE *arquivo, unsigned long fileSize, TreeNode *tree, int 
         }
 
         if(treeRoot->right == NULL && treeRoot->left == NULL){// if a leaf is found
-            fprintf(newFile, "%c", treeRoot->byte);//write data into file
+            fprintf(newFile, "%c", (unsigned char)treeRoot->byte);//write data into file
             treeRoot = tree; // returning to the root
         }
     }

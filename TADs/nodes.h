@@ -13,20 +13,20 @@ typedef struct hashNode {
     unsigned long int frequency;
     unsigned short int compressed;
     unsigned char compressed_len;
-    unsigned char byte;
+    void *byte;
 } HashNode;
 
 // Node usado na Heap
 typedef struct heapNode {
     unsigned long int frequency;
-    unsigned char byte;
+    void *byte;
     struct heapNode *left;
     struct heapNode *right;
 } HeapNode;
 
 // Node usado na arvore
 typedef struct treeNode {
-    unsigned char byte;
+    void *byte;
     struct treeNode *right;
     struct treeNode *left;
 } TreeNode;
@@ -35,7 +35,7 @@ typedef struct treeNode {
 TreeNode *create_node(unsigned char byte){
 
     TreeNode *new_node = (TreeNode *) malloc(sizeof(TreeNode));
-    new_node->byte = byte;
+    new_node->byte = (void *)byte;
     new_node->right = NULL;
     new_node->left = NULL;
 
@@ -47,7 +47,7 @@ TreeNode *create_node(unsigned char byte){
 HashNode *create_hashNode(unsigned char byte) {
 
     HashNode *new_node = (HashNode *)malloc(sizeof(HashNode));
-    new_node->byte = byte;
+    new_node->byte = (void *)byte;
     new_node->frequency = 1;
     new_node->compressed = 0;
     new_node->compressed_len = 0;
@@ -56,7 +56,7 @@ HashNode *create_hashNode(unsigned char byte) {
 
 }
 
-HeapNode *create_heapNode(unsigned char byte, long int frequency) {
+HeapNode *create_heapNode(void *byte, unsigned long frequency) {
 
     HeapNode *new_node = (HeapNode *)malloc(sizeof(HeapNode));
     new_node->byte = byte;

@@ -14,11 +14,10 @@
     <list default="true" id="55765b6e-dacd-4bc2-a9fe-92f83b7fdfc5" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/TADs/hash_table.h" beforeDir="false" afterPath="$PROJECT_DIR$/TADs/hash_table.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TADs/heap.h" beforeDir="false" afterPath="$PROJECT_DIR$/TADs/heap.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TADs/lista.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TADs/nodes.h" beforeDir="false" afterPath="$PROJECT_DIR$/TADs/nodes.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TADs/tree.h" beforeDir="false" afterPath="$PROJECT_DIR$/TADs/tree.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TADs/utilities.h" beforeDir="false" afterPath="$PROJECT_DIR$/TADs/utilities.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/compress/compress.h" beforeDir="false" afterPath="$PROJECT_DIR$/compress/compress.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/main.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/decompress/decompress.h" beforeDir="false" afterPath="$PROJECT_DIR$/decompress/decompress.h" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -32,39 +31,40 @@
     <session id="-1657138797">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="4" />
+          <entry key="project.closed" value="5" />
+          <entry key="project.open.time.21" value="1" />
           <entry key="project.open.time.24" value="1" />
           <entry key="project.open.time.26" value="1" />
           <entry key="project.open.time.4" value="1" />
           <entry key="project.open.time.5" value="1" />
-          <entry key="project.opened" value="4" />
+          <entry key="project.opened" value="5" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="c" value="457" />
-          <entry key="h" value="4545" />
-          <entry key="txt" value="91" />
+          <entry key="c" value="458" />
+          <entry key="h" value="8744" />
+          <entry key="txt" value="140" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="ObjectiveC" value="5002" />
-          <entry key="PLAIN_TEXT" value="91" />
+          <entry key="ObjectiveC" value="9202" />
+          <entry key="PLAIN_TEXT" value="140" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="c" value="3" />
+          <entry key="c" value="5" />
           <entry key="gitignore" value="3" />
-          <entry key="h" value="19" />
+          <entry key="h" value="35" />
           <entry key="txt" value="6" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="CMakeLists.txt" value="2" />
-          <entry key="ObjectiveC" value="22" />
+          <entry key="ObjectiveC" value="40" />
           <entry key="PLAIN_TEXT" value="7" />
         </counts>
       </usages-collector>
@@ -94,57 +94,26 @@
       <usages-collector id="statistics.file.types.open" />
       <usages-collector id="statistics.cidr.testingFrameworks.usages" />
     </session>
-    <session id="565683069">
-      <usages-collector id="statistics.file.extensions.open">
-        <counts>
-          <entry key="decompressedfile" value="3" />
-          <entry key="h" value="2" />
-          <entry key="huff" value="1" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.types.open">
-        <counts>
-          <entry key="ObjectiveC" value="2" />
-          <entry key="PLAIN_TEXT" value="4" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.extensions.edit">
-        <counts>
-          <entry key="h" value="9" />
-          <entry key="txt" value="4" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.types.edit">
-        <counts>
-          <entry key="ObjectiveC" value="9" />
-          <entry key="PLAIN_TEXT" value="4" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.lifecycle.project">
-        <counts>
-          <entry key="project.closed" value="2" />
-          <entry key="project.open.time.43" value="1" />
-          <entry key="project.opened" value="1" />
-        </counts>
-      </usages-collector>
-    </session>
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+    <leaf>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
+        <entry file="file://$PROJECT_DIR$/main.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="6" selection-start-line="6" selection-end-line="6" />
+            <state relative-caret-position="506">
+              <caret line="23" column="5" selection-start-line="23" selection-start-column="5" selection-end-line="23" selection-end-column="5" />
+              <folding>
+                <element signature="e#42#60#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/compress/compress.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="171">
-              <caret line="158" column="40" selection-start-line="158" selection-start-column="40" selection-end-line="158" selection-end-column="40" />
+            <state relative-caret-position="130">
+              <caret line="153" column="50" selection-start-line="153" selection-start-column="50" selection-end-line="153" selection-end-column="50" />
               <folding>
                 <element signature="e#97#115#0" expanded="true" />
               </folding>
@@ -152,7 +121,61 @@
           </provider>
         </entry>
       </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/TADs/hash_table.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="353">
+              <caret line="52" column="40" selection-start-line="52" selection-start-column="40" selection-end-line="52" selection-end-column="40" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/TADs/heap.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="204">
+              <caret line="177" column="5" selection-start-line="177" selection-start-column="5" selection-end-line="177" selection-end-column="5" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/TADs/nodes.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="877">
+              <caret line="50" column="24" selection-start-line="50" selection-start-column="24" selection-end-line="50" selection-end-column="24" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/TADs/tree.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="198">
+              <caret line="11" column="16" selection-start-line="11" selection-start-column="16" selection-end-line="11" selection-end-column="16" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/decompress/decompress.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="144">
+              <caret line="52" lean-forward="true" selection-start-line="52" selection-end-line="52" />
+              <folding>
+                <element signature="e#101#119#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
     </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>create_key</find>
+      <find>ultilizados</find>
+    </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -162,13 +185,14 @@
       <list>
         <option value="$PROJECT_DIR$/teste.txt" />
         <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/TADs/hash_table.h" />
         <option value="$PROJECT_DIR$/TADs/utilities.h" />
         <option value="$PROJECT_DIR$/main.c" />
-        <option value="$PROJECT_DIR$/TADs/nodes.h" />
+        <option value="$PROJECT_DIR$/TADs/hash_table.h" />
         <option value="$PROJECT_DIR$/TADs/heap.h" />
-        <option value="$PROJECT_DIR$/decompress/decompress.h" />
         <option value="$PROJECT_DIR$/compress/compress.h" />
+        <option value="$PROJECT_DIR$/TADs/nodes.h" />
+        <option value="$PROJECT_DIR$/TADs/tree.h" />
+        <option value="$PROJECT_DIR$/decompress/decompress.h" />
       </list>
     </option>
   </component>
@@ -180,8 +204,8 @@
   </component>
   <component name="OCFindUsagesOptions" text="true" ivars="false" properties="true" derivedClasses="false" />
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="311" />
-    <option name="y" value="-23" />
+    <option name="x" value="425" />
+    <option name="y" value="-8" />
     <option name="width" value="1346" />
     <option name="height" value="688" />
   </component>
@@ -190,18 +214,37 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
               <item name="Huffman" type="b2602c69:ProjectViewProjectNode" />
-              <item name="HuffmanAlgorithm2018" type="462c0819:PsiDirectoryNode" />
+              <item name="Huffman2018.1" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Huffman" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Huffman2018.1" type="462c0819:PsiDirectoryNode" />
+              <item name="compress" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Huffman" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Huffman2018.1" type="462c0819:PsiDirectoryNode" />
+              <item name="decompress" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Huffman" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Huffman2018.1" type="462c0819:PsiDirectoryNode" />
+              <item name="TADs" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Huffman" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Scratches and Consoles" type="1a2a3e82:ScratchProjectViewPane$MyProjectNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -209,11 +252,10 @@
     <property name="last_opened_file_path" value="$USER_HOME$/Desktop/DataStructure_Project-master/huffman" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\Julyana\Documents\P-c\HuffmanAlgorithm2018" />
       <recent name="C:\Users\paulo\CLionProjects\Huffman2018.1" />
     </key>
   </component>
@@ -260,7 +302,7 @@
       <workItem from="1537134522371" duration="2271000" />
       <workItem from="1537186904298" duration="18903000" />
       <workItem from="1537470169353" duration="186000" />
-      <workItem from="1537553412624" duration="602000" />
+      <workItem from="1537818472138" duration="12826000" />
     </task>
     <task id="LOCAL-00001" summary="pfv vai">
       <created>1536594973901</created>
@@ -339,18 +381,39 @@
       <option name="project" value="LOCAL" />
       <updated>1537296578483</updated>
     </task>
-    <task id="LOCAL-00012" summary="pull">
-      <created>1537503506640</created>
+    <task id="LOCAL-00012" summary="almost done">
+      <created>1537503084432</created>
       <option name="number" value="00012" />
       <option name="presentableId" value="LOCAL-00012" />
       <option name="project" value="LOCAL" />
-      <updated>1537503506640</updated>
+      <updated>1537503084432</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="almost done">
+      <created>1537503394287</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1537503394287</updated>
+    </task>
+    <task id="LOCAL-00014" summary="almost done">
+      <created>1537505663255</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1537505663255</updated>
+    </task>
+    <task id="LOCAL-00015" summary="compress comentada">
+      <created>1537917442115</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1537917442115</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="41709000" />
+    <option name="totallyTimeSpent" value="54653000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -362,36 +425,37 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1096" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.14599092" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.10927505" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32952183" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.34918034" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3128898" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3991684" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32952183" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Messages" order="8" weight="0.3262295" />
+      <window_info anchor="bottom" id="Messages" order="8" weight="0.32744282" />
       <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.49946696" weight="0.32952183" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5010661" side_tool="true" weight="0.32952183" />
-      <window_info anchor="bottom" id="Version Control" order="11" sideWeight="0.4989339" weight="0.29180327" />
-      <window_info anchor="bottom" id="CMake" order="12" weight="0.32851985" />
+      <window_info anchor="bottom" id="Version Control" order="11" sideWeight="0.4989339" weight="0.1008316" />
+      <window_info anchor="bottom" id="CMake" order="12" weight="0.32848233" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Database" order="3" />
     </layout>
     <layout-to-restore>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.10181237" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.10714286" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32952183" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.34823284" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.17775467" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3991684" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -421,8 +485,9 @@
     <MESSAGE value="correct tree" />
     <MESSAGE value="update" />
     <MESSAGE value="added compression functions" />
-    <MESSAGE value="pull" />
-    <option name="LAST_COMMIT_MESSAGE" value="pull" />
+    <MESSAGE value="almost done" />
+    <MESSAGE value="compress comentada" />
+    <option name="LAST_COMMIT_MESSAGE" value="compress comentada" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/.gitignore">
@@ -432,40 +497,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="6" selection-start-line="6" selection-end-line="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TADs/lista.h" />
     <entry file="file://$PROJECT_DIR$/TADs/utilities.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="350">
-          <caret line="14" selection-start-line="14" selection-end-line="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/decompress/decompress.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1540">
-          <caret line="14" column="20" selection-start-line="14" selection-start-column="20" selection-end-line="14" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/TADs/heap.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="109">
-          <caret line="100" column="6" selection-start-line="100" selection-start-column="6" selection-end-line="100" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/TADs/nodes.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-34">
-          <caret line="14" column="32" selection-start-line="14" selection-start-column="32" selection-end-line="14" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/TADs/hash_table.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#101#119#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="300">
+          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
         </state>
       </provider>
     </entry>
@@ -478,35 +521,58 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="25" column="13" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="13" />
+        <state relative-caret-position="506">
+          <caret line="23" column="5" selection-start-line="23" selection-start-column="5" selection-end-line="23" selection-end-column="5" />
           <folding>
             <element signature="e#42#60#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
+    <entry file="file://$PROJECT_DIR$/TADs/hash_table.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" selection-start-line="6" selection-end-line="6" />
+        <state relative-caret-position="353">
+          <caret line="52" column="40" selection-start-line="52" selection-start-column="40" selection-end-line="52" selection-end-column="40" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/decompressedfile">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/compressed.huff">
+    <entry file="file://$PROJECT_DIR$/TADs/heap.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-9078" />
+        <state relative-caret-position="204">
+          <caret line="177" column="5" selection-start-line="177" selection-start-column="5" selection-end-line="177" selection-end-column="5" />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/compress/compress.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="158" column="40" selection-start-line="158" selection-start-column="40" selection-end-line="158" selection-end-column="40" />
+        <state relative-caret-position="130">
+          <caret line="153" column="50" selection-start-line="153" selection-start-column="50" selection-end-line="153" selection-end-column="50" />
           <folding>
             <element signature="e#97#115#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TADs/nodes.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="877">
+          <caret line="50" column="24" selection-start-line="50" selection-start-column="24" selection-end-line="50" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TADs/tree.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="11" column="16" selection-start-line="11" selection-start-column="16" selection-end-line="11" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/decompress/decompress.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="52" lean-forward="true" selection-start-line="52" selection-end-line="52" />
+          <folding>
+            <element signature="e#101#119#0" expanded="true" />
           </folding>
         </state>
       </provider>

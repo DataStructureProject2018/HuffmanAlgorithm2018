@@ -40,7 +40,7 @@ TreeNode* make_tree(FILE *arquivo, int treeSize, TreeNode *tree){
 void printf_tree(TreeNode *tree){
 
     if(tree != NULL){
-        printf("%c ", tree->byte);
+        printf("%c ", (unsigned char)tree->byte);
         printf_tree(tree->left);
         printf_tree(tree->right);
     }
