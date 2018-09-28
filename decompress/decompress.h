@@ -73,7 +73,7 @@ void decompress_file(FILE *arquivo, off64_t fileSize, TreeNode *tree, short int 
                 treeRoot = treeRoot->left;
             }
 
-            if(treeRoot->right == NULL && treeRoot->left == NULL) {// if a leaf is found
+            if(!treeRoot->right && !treeRoot->left) {// if a leaf is found
                 fprintf(newFile, "%c", (unsigned char)treeRoot->byte);//write data into file
                 treeRoot = tree; // returning to the root
             }
@@ -92,7 +92,7 @@ void decompress_file(FILE *arquivo, off64_t fileSize, TreeNode *tree, short int 
             treeRoot = treeRoot->left;
         }
 
-        if(treeRoot->right == NULL && treeRoot->left == NULL) {// if a leaf is found
+        if(!treeRoot->right && !treeRoot->left) {// if a leaf is found
             fprintf(newFile, "%c", (unsigned char)treeRoot->byte);//write data into file
             treeRoot = tree; // returning to the root
         }
@@ -103,7 +103,6 @@ void decompress_file(FILE *arquivo, off64_t fileSize, TreeNode *tree, short int 
 
 void start_decompression() {
 
-    printf("Starting decompression...\n");
     TreeNode *tree = NULL;
     FILE *arquivo, *newFile;
     short int *array;

@@ -97,7 +97,7 @@ void compress_bytes(HashTable *ht, FILE *in, FILE *out, unsigned char trashSize)
                 fprintf(out, "%c", auxByte); // printamos o byte no arquivo
                 auxByte = caractere << (8 - (tamByte - 8 - auxTamByte)); // recebemos o restante dos bits que faltam na versao comprimida do byte
                 auxByte >>= (8 - (tamByte - 8 - auxTamByte)); // mandamos todos os bits setados para a direita, de forma que estao no inicio
-                tam = tamByte - 8 - auxTamByte; // atulaizamos a quantidade de bits setados que possuimos no byte a ser printado
+                tam = tamByte - 8 - auxTamByte; // atualizamos a quantidade de bits setados que possuimos no byte a ser printado
             }
         } else { // caso tenhamos mais bits nao setados no byte do que a quantidade total de bits da versao comprimida
             auxByte <<= tamByte; // liberamos os bits das posicoes iniciais
@@ -127,13 +127,14 @@ void start_compression() {
         printf("Failed to open the compressed file\n");
         return;
     }
+
     printf("Getting bytes frequency...\n");
     HashTable *ht = get_frequency(in);
     printf("Done...\n");
     printf("Creating heap...\n");
     Heap *heap = create_heap();
     printf("Done...\n");
-    printf("Transfering heap to HashTable...\n");
+    printf("Transferring hashTable to heap...\n");
     heap = ht_to_heap(ht, heap);
     printf("Done...\n");
     printf("Creating HuffTree...\n");
