@@ -28,8 +28,6 @@ HashTable *create_table() {
     return new_ht;
 
 }
-
-
 // Insere um  byte na hashTable, caso ele já exista a sua frequência somente aumenta.
 HashTable *put(HashTable *ht, unsigned char byte) {
 
@@ -41,20 +39,6 @@ HashTable *put(HashTable *ht, unsigned char byte) {
     }
 
     return ht;
-
-}
-
-// Imprime a hashTable
-void print_table(HashTable *ht) {
-
-    int i;
-    for(i = 0; i < MAX_TABLE_SIZE; i += 1) {
-        if(ht->table[i]) {
-            printf("#  %d # %ld # %c # %d # %d #\n", i, ht->table[i]->frequency, (unsigned char)ht->table[i]->byte, ht->table[i]->compressed_len, ht->table[i]->compressed);
-        } else {
-            //printf("#  %d  EMPTY  #\n", i);
-        }
-    }
 
 }
 
@@ -85,7 +69,6 @@ void destroy_table(HashTable *ht) {
         }
     }
     free(ht);
-
 }
 
 #endif //HUFFMAN_HASH_TABLE_H

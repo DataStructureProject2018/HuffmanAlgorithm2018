@@ -29,7 +29,6 @@ Heap* create_heap() {
         new_heap->data[i] = NULL;
     }
 
-
     return new_heap;
 
 }
@@ -69,14 +68,17 @@ void min_heapify(Heap *heap, int i) {
     int leftIndex = get_left_index(i);
     int rightIndex = get_right_index(i);
 
+    // Verificamos se o filho da esquerda é menor do que o pai dele
     if(leftIndex <= heap->size && heap->data[leftIndex]->frequency <= heap->data[i]->frequency) {
         smallest = leftIndex;
     }
 
+    // Verificamos se o filho da direita é menor do que o da esquerda (caso o da esquerda seja menor do que o pai)
     if(rightIndex <= heap->size && heap->data[rightIndex]->frequency <= heap->data[smallest]->frequency) {
         smallest = rightIndex;
     }
 
+    // Caso tenhamos achado um filho menor, trocamos ele com o pai e continuamos a arrumar a heap
     if(smallest != i) {
         swap_nodes(&heap->data[i], &heap->data[smallest]);
 
@@ -99,7 +101,7 @@ void build_min_heap(Heap *heap) {
 // Adiciona todos os nós da hashTable na heap e faz a heap mínima
 Heap* ht_to_heap(HashTable *ht, Heap *heap) {
 
-    int i, j = 1;
+    unsigned short i, j = 1;
 
     for(i = 0; i < 256; i += 1) {
 
@@ -163,18 +165,6 @@ Heap *remove_node(Heap *heap) {
 
 }
 
-void print_heap(Heap *heap) {
-
-    int i = 1;
-    while(i < heap->size){
-        printf("(%c , %ld) | ", (unsigned char)heap->data[i]->byte, heap->data[i]->frequency);
-        i++;
-    }
-
-    printf("(%c , %ld)\n", (unsigned char)heap->data[i]->byte, heap->data[i]->frequency);
-
-}
-
 void print_heap_as_tree(HeapNode *tree, FILE *out) {
 
     if(tree) {
@@ -206,5 +196,63 @@ Heap *createHuffTree(Heap *heap) {
     return heap;
 
 }
+
+unsigned short getTreeSize(HeapNode *tree, unsigned short cont) {
+
+    HeapNode *current = tree;
+    if(current) {
+        cont++;
+        if(check_leaf(current)) {
+            if((unsigned char)current->byte == '\\' || (unsigned char)current->byte == '*') {
+                cont++;
+            }
+        }
+        cont = getTreeSize(current->left, cont);
+        cont = getTreeSize(current->right, cont);
+    }
+    return cont;
+
+}
+
+// Cria a versao comprimida de cada byte, e salva na hashTable ela e a quantidade de bits que usaremos dela
+void createBits(HeapNode *tree, HashTable *ht, unsigned short bits, unsigned char len) {
+
+    HeapNode *current = tree;
+    if(current) {
+        if(check_leaf(current)) {
+            ht->table[(unsigned char)current->byte]->compressed = bits;
+            ht->table[(unsigned char)current->byte]->compressed_len = len;
+        }
+        len++;
+        bits <<= 1;
+        createBits(current->left, ht, bits, len);
+        bits++;
+        createBits(current->right, ht, bits, len);
+    }
+
+}
+
+void destroy_HuffTree(HeapNode *tree) {
+
+    if(tree) {
+        destroy_HuffTree(tree->left);
+        destroy_HuffTree(tree->right);
+        free(tree);
+    }
+
+}
+
+void destroy_heap(Heap *heap) {
+
+    int i;
+    for(i = 1; i < MAX_HEAP_SIZE; i++) {
+        if(heap->data[i]) {
+            free(heap->data[i]);
+        }
+    }
+
+    free(heap);
+
+};
 
 #endif //HUFFMAN_HEAP_H
