@@ -54,10 +54,11 @@ short int *extract_trash_and_tree_size(FILE *arquivo) { //gets the size of: tree
 }
 
 void decompress_file(FILE *arquivo, off64_t fileSize, TreeNode *tree, short int treeSize, unsigned char lixo, FILE *newFile) {
+
     TreeNode *treeRoot = tree; //saves the root of the tree
     int i, bit;
     unsigned char c;
-    unsigned long j = 0;
+    unsigned long long j = 0;
 
     while(j < fileSize - 3 - treeSize) {
 
@@ -80,7 +81,6 @@ void decompress_file(FILE *arquivo, off64_t fileSize, TreeNode *tree, short int 
         }
         j++;
     }
-
     fread(&c, sizeof(c), 1, arquivo); //giving c the last byte
 
     for(i = 7; i >= 0 + lixo; i--) { //last byte operation
@@ -107,7 +107,7 @@ void start_decompression() {
     FILE *arquivo, *newFile;
     short int *array;
 
-    char fileName[255] = "../", dir[255];
+    char fileName[30] = "../", dir[30];
 
     printf("Type file name: ");
     scanf("%s", dir);
@@ -119,7 +119,9 @@ void start_decompression() {
         return;
     }
 
-    newFile = fopen("../decompressed", "wb");
+    memcpy(dir, fileName, strlen(fileName)-5);
+    dir[strlen(fileName)-5] = '\0';
+    newFile = fopen(dir, "wb");
     if(!newFile) {
         printf("Failed to create the decompressed file\n");
         return;

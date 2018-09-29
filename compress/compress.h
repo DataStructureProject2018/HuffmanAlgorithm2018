@@ -110,7 +110,7 @@ void compress_bytes(HashTable *ht, FILE *in, FILE *out, unsigned char trashSize)
 
 void start_compression() {
 
-    char fileName[255] = "../", dir[255];
+    char fileName[30] = "../", dir[30];
 
     printf("Type file name: ");
     scanf("%s", dir);
