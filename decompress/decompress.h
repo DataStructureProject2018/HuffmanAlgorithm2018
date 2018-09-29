@@ -112,6 +112,7 @@ void start_decompression() {
     printf("Type file name: ");
     scanf("%s", dir);
     strcat(fileName, dir);
+    //comentario aqui
 
     arquivo = fopen(fileName, "rb");
     if(!arquivo) {
