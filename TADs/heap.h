@@ -217,17 +217,17 @@ unsigned short getTreeSize(HeapNode *tree, unsigned short cont) {
 // Cria a versao comprimida de cada byte, e salva na hashTable ela e a quantidade de bits que usaremos dela
 void createBits(HeapNode *tree, HashTable *ht, unsigned short bits, unsigned char len) {
 
-    HeapNode *current = tree;
-    if(current) {
-        if(check_leaf(current)) {
-            ht->table[(unsigned char)current->byte]->compressed = bits;
-            ht->table[(unsigned char)current->byte]->compressed_len = len;
+    if(tree) {
+        if(check_leaf(tree)) {
+            ht->table[(unsigned char)tree->byte]->compressed = bits;
+            ht->table[(unsigned char)tree->byte]->compressed_len = len;
+            return;
         }
         len++;
         bits <<= 1;
-        createBits(current->left, ht, bits, len);
+        createBits(tree->left, ht, bits, len);
         bits++;
-        createBits(current->right, ht, bits, len);
+        createBits(tree->right, ht, bits, len);
     }
 
 }
