@@ -35,16 +35,16 @@ TreeNode* make_tree(FILE *arquivo, int treeSize, TreeNode *tree) {
     return tree;
 
 }
-
-void print_tree(TreeNode *tree){
-
-    if(tree){
-        printf("%c ", (unsigned char)tree->byte);
-        print_tree(tree->left);
-        print_tree(tree->right);
-    }
-
-}
+//
+//void print_tree(TreeNode *tree){
+//
+//    if(tree){
+//        printf("%c ", (unsigned char)tree->byte);
+//        print_tree(tree->left);
+//        print_tree(tree->right);
+//    }
+//
+//}
 
 void destroy_tree(TreeNode *tree) {
 

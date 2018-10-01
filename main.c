@@ -10,14 +10,6 @@
 
 int main()
 {
-
-    if(runTests() == 0) {
-        printf("All tests done!\n");
-    } else {
-        printf("Failed Tests, exiting program...");
-        return 0;
-    }
-
     int opcao;
 
     printf("Type your choice:\n(1) Compress\n(2) Decompress\n(Other) Quit\n");

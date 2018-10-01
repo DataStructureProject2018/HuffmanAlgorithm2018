@@ -59,7 +59,7 @@ void decompress_file(FILE *arquivo, off64_t fileSize, TreeNode *tree, short int 
     unsigned char c;
     unsigned long j = 0;
 
-    while(j < fileSize - 3 - treeSize) {
+    while(j < fileSize - 3 - treeSize) {//its going to run filesize less treesize and less the first two bytes that we read and the last byte
 
         fread(&c, sizeof(c), 1, arquivo);
 

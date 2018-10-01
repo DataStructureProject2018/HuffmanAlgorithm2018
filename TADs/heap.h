@@ -73,7 +73,7 @@ void min_heapify(Heap *heap, int i) {
         smallest = leftIndex;
     }
 
-    // Verificamos se o filho da direita é menor do que o da esquerda (caso o da esquerda seja menor do que o pai)
+    // Verificamos se o filho da direita é menor do que o da
     if(rightIndex <= heap->size && heap->data[rightIndex]->frequency <= heap->data[smallest]->frequency) {
         smallest = rightIndex;
     }
@@ -103,7 +103,7 @@ Heap* ht_to_heap(HashTable *ht, Heap *heap) {
 
     unsigned short i, j = 1;
 
-    for(i = 0; i < 256; i += 1) {
+    for(i = 0; i < 256; ++i) {
 
         if(ht->table[i]){
             heap->data[j] = create_heapNode(ht->table[i]->byte, ht->table[i]->frequency);
@@ -138,17 +138,18 @@ void add_node(Heap *heap, HeapNode *node) {
 // Remove os 2 nodes com menor frequencia e adiciona um novo node com os nodes removidos
 Heap *remove_node(Heap *heap) {
 
-    if(heap->size){
+    if(heap->size){//ate a heap esvaziar
         HeapNode *node = create_heapNode('*', heap->data[1]->frequency);
         node->left = heap->data[1];
 
+        // prox 3 linhas servem pra remover o nó da heap
         heap->data[1] = heap->data[heap->size];
         heap->data[heap->size] = NULL;
         heap->size--;
 
         min_heapify(heap, 1);
 
-        if(heap->size >= 1) {
+        if(heap->size) {
             node->frequency += heap->data[1]->frequency;
             node->right = heap->data[1];
             heap->data[1] = heap->data[heap->size];

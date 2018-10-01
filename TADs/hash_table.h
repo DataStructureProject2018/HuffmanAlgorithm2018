@@ -42,7 +42,7 @@ HashTable *put(HashTable *ht, unsigned char byte) {
 
 }
 
-// Percorre o arquivo completamento e adiciona os caracteres na hashTable
+// Percorre o arquivo completamento e adiciona os caracteres e suas frequencias na hashTable
 HashTable *get_frequency(FILE *in) {
 
     HashTable *ht = create_table();
