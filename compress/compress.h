@@ -15,9 +15,9 @@
 #include "../TADs/utilities.h"
 
 
-unsigned char totalBits(HashTable *ht) {
+unsigned char trash_size(HashTable *ht) {
 
-    unsigned long total = 0;
+    off_t total = 0; // to support large files
     int i;
 
     for(i = 0; i < MAX_TABLE_SIZE; i++) {
@@ -26,18 +26,15 @@ unsigned char totalBits(HashTable *ht) {
         }
     }
 
-    return total%8;
+    return 8 - (total % 8);
 }
 
 unsigned char createTwoFirstBytes(HashTable *ht, unsigned short treeSize, FILE *out) {
 
-    unsigned char trashSize = (unsigned char) (8 - totalBits(ht));
+    unsigned char trashSize = (trash_size(ht));
 
-    unsigned short aux = trashSize;
-    aux <<= 13;
-    aux ^= treeSize;
+    unsigned char first = (unsigned char)((trashSize << 5) ^ (treeSize >> 8)), second = (unsigned char)treeSize;
 
-    unsigned char second = aux, first = aux >> 8;
     fprintf(out, "%c%c", first, second);
 
     return trashSize;
@@ -110,11 +107,10 @@ void compress_bytes(HashTable *ht, FILE *in, FILE *out, unsigned char trashSize)
 
 void start_compression() {
 
-    char fileName[255] = "../", dir[255];
+    char fileName[255];
 
     printf("Type file name: ");
-    scanf("%s", dir);
-    strcat(fileName, dir);
+    scanf("%s", fileName);
 
     FILE *in = fopen(fileName, "rb");
     if(!in) {
@@ -146,11 +142,11 @@ void start_compression() {
     printf("Getting tree size...\n");
     unsigned short treeSize = getTreeSize(heap->data[1], 0);
     printf("Done...\n");
-    printf("Getting trash size...\n");
+    printf("Getting trash size and creating the first two bytes...\n");
     unsigned char trashSize = createTwoFirstBytes(ht, treeSize, out);
     printf("Done...\n");
     printf("Printing tree in file...\n");
-    print_heap_as_tree(heap->data[1], out);
+    print_huffTree(heap->data[1], out);
     printf("Done...\n");
     fseek(in, 0, SEEK_SET);
     printf("Starting compression...\n");
@@ -158,7 +154,6 @@ void start_compression() {
     printf("Done...\n");
 
     destroy_table(ht);
-    destroy_HuffTree(heap->data[1]);
     destroy_heap(heap);
 
     fclose(in);

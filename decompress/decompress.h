@@ -11,59 +11,31 @@
 #include "../TADs/tree.h"
 #include "../TADs/utilities.h"
 
-short int *extract_trash_and_tree_size(FILE *arquivo) { //gets the size of: tree and trash
+unsigned short extract_trash_and_tree_size(FILE *arquivo) { //gets the size of: tree and trash
 
-    unsigned char c, lixo = 0, bit;
-    short int tree = 0, i;
+    unsigned char byte;
+    fread(&byte, sizeof(byte), 1, arquivo);
+    unsigned short twoFirstBytes = byte;
+    twoFirstBytes <<= 8;
+    fread(&byte, sizeof(byte), 1, arquivo);
+    twoFirstBytes ^= byte;
 
-    fread(&c, sizeof(c), 1, arquivo);
-    for(i = 7; i >= 0; i--) {
-        bit = is_bit_i_set(c, i);
-        if(i > 4){
-            if(bit == 0){
-                lixo <<= 1;
-            } else {
-                lixo <<= 1;
-                lixo++;
-            }
-        } else {
-            if(bit == 0){
-                tree <<= 1;
-            } else {
-                tree <<= 1;
-                tree++;
-            }
-        }
-    }
-    fread(&c, sizeof(c), 1, arquivo); //reads the second character and c receives it
-    for(i = 7; i >= 0; i--) {
-        bit = is_bit_i_set(c, i);
-        if(bit == 0) {
-            tree <<= 1;
-        } else {
-            tree <<= 1;
-            tree++;
-        }
-    }
-    short int *array = (short int *)malloc(sizeof(short int) * 2);
-    array[0] = lixo;
-    array[1] = tree;
-
-    return array;
+    return twoFirstBytes;
 
 }
 
-void decompress_file(FILE *arquivo, off64_t fileSize, TreeNode *tree, short int treeSize, unsigned char lixo, FILE *newFile) {
+void decompress_file(FILE *arquivo, off_t fileSize, TreeNode *tree, short int treeSize, unsigned char lixo, FILE *newFile) {
+
     TreeNode *treeRoot = tree; //saves the root of the tree
     int i, bit;
     unsigned char c;
-    unsigned long j = 0;
+    unsigned long long j = 0;
 
     while(j < fileSize - 3 - treeSize) {
 
         fread(&c, sizeof(c), 1, arquivo);
 
-        for(i = 7; i >= 0 ; i--) {
+        for(i = 7; i >= 0 ; --i) {
 
             bit = is_bit_i_set(c, i);// bit will receive the value of the searched bit
 
@@ -80,10 +52,9 @@ void decompress_file(FILE *arquivo, off64_t fileSize, TreeNode *tree, short int 
         }
         j++;
     }
-
     fread(&c, sizeof(c), 1, arquivo); //giving c the last byte
 
-    for(i = 7; i >= 0 + lixo; i--) { //last byte operation
+    for(i = 7; i >= 0 + lixo; --i) { //last byte operation
         bit = is_bit_i_set(c, i);// bit will receive the value of the searched bit
 
         if(bit > 0) {
@@ -105,40 +76,46 @@ void start_decompression() {
 
     TreeNode *tree = NULL;
     FILE *arquivo, *newFile;
-    short int *array;
+    unsigned short twoFirstBytes, treeSize;
+    unsigned char trashSize;
 
-    char fileName[255] = "../", dir[255];
+    char fileName[255], dir[255];
 
     printf("Type file name: ");
-    scanf("%s", dir);
-    strcat(fileName, dir);
+    scanf("%s", fileName);
 
     arquivo = fopen(fileName, "rb");
     if(!arquivo) {
-        printf("Failed to open %s\n", fileName);
+        printf("Failed to open %s...\n", fileName);
         return;
     }
 
-    newFile = fopen("../decompressed", "wb");
+    memcpy(dir, fileName, strlen(fileName)-5);
+    dir[strlen(fileName)-5] = '\0';
+    newFile = fopen(dir, "wb");
     if(!newFile) {
-        printf("Failed to create the decompressed file\n");
+        printf("Failed to create the decompressed file...\n");
         return;
     }
-
 
     fseek(arquivo, 0, SEEK_END); //arquivo will now point to the end of the file
 
-    off64_t fileSize = ftello64(arquivo); // offt64_t can support 2^63 , we use this to support large files
+    off_t fileSize = ftello(arquivo); // off_t can support 2^63 , we use this to support large files
     fseek(arquivo, 0, SEEK_SET);
     printf("Getting trash and tree size...\n");
-    array = extract_trash_and_tree_size(arquivo);
+    twoFirstBytes = extract_trash_and_tree_size(arquivo);
+    treeSize = (twoFirstBytes << 3); // >> 3 in the same line, does not work
+    treeSize >>= 3;
+    trashSize = twoFirstBytes >> 13;
+    printf("%d %d\n", treeSize, trashSize);
+
     printf("Done...!\n");
     printf("Building tree from file...\n");
-    tree = make_tree(arquivo, array[1], tree);
+    tree = make_tree(arquivo, &treeSize, tree);
     printf("Done...!\n");
     printf("Starting decompression...\n");
-    decompress_file(arquivo, fileSize, tree, array[1], (unsigned char)array[0], newFile);
-    printf("Done...\n");
+    decompress_file(arquivo, fileSize, tree, treeSize, trashSize, newFile);
+    printf("Done...!\n");
 
     destroy_tree(tree);
 

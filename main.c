@@ -6,17 +6,10 @@
 #include "./compress/compress.h"
 #include "./decompress/decompress.h"
 #include "./TADs/heap.h"
-#include "./tests/Main_Test.h"
+#include "./tests/teste.h"
 
 int main()
 {
-
-    if(runTests() == 0) {
-        printf("All tests done!\n");
-    } else {
-        printf("Failed Tests, exiting program...");
-        return 0;
-    }
 
     int opcao;
 
@@ -29,6 +22,7 @@ int main()
     } else if(opcao == 2) {
         start_decompression();
     } else {
+        start_tests();
         printf("Saindo do programa...\n");
     }
 

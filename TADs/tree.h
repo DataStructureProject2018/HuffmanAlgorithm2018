@@ -9,7 +9,7 @@
 #include <stdlib.h>
 #include "./nodes.h"
 
-TreeNode* make_tree(FILE *arquivo, int treeSize, TreeNode *tree) {
+TreeNode* make_tree(FILE *arquivo, unsigned short *treeSize, TreeNode *tree) {
 
     if(!treeSize) {
         return tree;

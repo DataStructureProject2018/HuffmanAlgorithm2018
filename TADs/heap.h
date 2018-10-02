@@ -136,7 +136,7 @@ void add_node(Heap *heap, HeapNode *node) {
 }
 
 // Remove os 2 nodes com menor frequencia e adiciona um novo node com os nodes removidos
-Heap *remove_node(Heap *heap) {
+Heap *merge_nodes(Heap *heap) {
 
     if(heap->size){
         HeapNode *node = create_heapNode('*', heap->data[1]->frequency);
@@ -165,16 +165,16 @@ Heap *remove_node(Heap *heap) {
 
 }
 
-void print_heap_as_tree(HeapNode *tree, FILE *out) {
+void print_huffTree(HeapNode *tree, FILE *out) {
 
     if(tree) {
-        if((unsigned char)tree->byte == '\\' || ((unsigned char)tree->byte == '*' && !tree->left)) {
+        if(!tree->left && ( (unsigned char)tree->byte == '\\' || ((unsigned char)tree->byte == '*')) ) {
             fprintf(out, "\\");
         }
         fprintf(out, "%c", (unsigned char)tree->byte);
 
-        print_heap_as_tree(tree->left, out);
-        print_heap_as_tree(tree->right, out);
+        print_huffTree(tree->left, out);
+        print_huffTree(tree->right, out);
     }
 
 }
@@ -187,10 +187,10 @@ int check_leaf(HeapNode *tree) {
 
 Heap *createHuffTree(Heap *heap) {
 
-    int i = 1;
+    unsigned char i = 1;
     while(heap->size > 1 || i == 1){
-        heap = remove_node(heap);
-        i++;
+        heap = merge_nodes(heap);
+        ++i;
     }
 
     return heap;
@@ -199,16 +199,15 @@ Heap *createHuffTree(Heap *heap) {
 
 unsigned short getTreeSize(HeapNode *tree, unsigned short cont) {
 
-    HeapNode *current = tree;
-    if(current) {
-        cont++;
-        if(check_leaf(current)) {
-            if((unsigned char)current->byte == '\\' || (unsigned char)current->byte == '*') {
+    if(tree) {
+        ++cont;
+        if(check_leaf(tree)) {
+            if((unsigned char)tree->byte == '\\' || (unsigned char)tree->byte == '*') {
                 cont++;
             }
         }
-        cont = getTreeSize(current->left, cont);
-        cont = getTreeSize(current->right, cont);
+        cont = getTreeSize(tree->left, cont);
+        cont = getTreeSize(tree->right, cont);
     }
     return cont;
 
@@ -245,7 +244,10 @@ void destroy_HuffTree(HeapNode *tree) {
 void destroy_heap(Heap *heap) {
 
     int i;
-    for(i = 1; i < MAX_HEAP_SIZE; i++) {
+
+    destroy_HuffTree(heap->data[1]);
+
+    for(i = 2; i < MAX_HEAP_SIZE; i++) {
         if(heap->data[i]) {
             free(heap->data[i]);
         }
