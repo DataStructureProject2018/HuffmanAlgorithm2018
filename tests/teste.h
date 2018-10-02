@@ -63,7 +63,44 @@ int start_tests (void)
         return CU_get_error();
     }
 
-   /* Run tests using Basic interface */
+    if ((NULL == CU_add_test(pSuite, "test_ht_to_heap", test_ht_to_heap)))
+    {
+        CU_cleanup_registry();
+        return CU_get_error();
+    }
+
+    if ((NULL == CU_add_test(pSuite, "test_merge_nodes", test_merge_nodes)))
+    {
+        CU_cleanup_registry();
+        return CU_get_error();
+    }
+
+    if ((NULL == CU_add_test(pSuite, "test_create_huffTree", test_create_huffTree)))
+    {
+        CU_cleanup_registry();
+        return CU_get_error();
+    }
+
+    if ((NULL == CU_add_test(pSuite, "test_get_treeSize", test_get_treeSize)))
+    {
+        CU_cleanup_registry();
+        return CU_get_error();
+    }
+
+    if ((NULL == CU_add_test(pSuite, "test_create_bits", test_create_bits)))
+    {
+        CU_cleanup_registry();
+        return CU_get_error();
+    }
+
+    if ((NULL == CU_add_test(pSuite, "test_min_heapify", test_min_heapify)))
+    {
+        CU_cleanup_registry();
+        return CU_get_error();
+    }
+
+
+    /* Run tests using Basic interface */
    	CU_basic_run_tests();
 
    /* Clean up registry and return */

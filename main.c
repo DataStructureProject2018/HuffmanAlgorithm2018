@@ -13,7 +13,7 @@ int main()
 
     int opcao;
 
-    printf("Type your choice:\n(1) Compress\n(2) Decompress\n(Other) Quit\n");
+    printf("Type your choice:\n(1) Compress\n(2) Decompress\n(3) Run Unit Tests\n(Other) Quit\n");
 
     scanf("%d", &opcao);
 
@@ -21,8 +21,9 @@ int main()
         start_compression();
     } else if(opcao == 2) {
         start_decompression();
-    } else {
+    } else if(opcao == 3) {
         start_tests();
+    } else {
         printf("Saindo do programa...\n");
     }
 

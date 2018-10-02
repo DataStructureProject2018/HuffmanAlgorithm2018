@@ -5,6 +5,23 @@
 #include "CUnit/Basic.h"
 #include "../TADs/heap.h"
 
+void test_get_treeSize() {
+
+    Heap *heap = create_heap();
+    add_node(heap, create_heapNode((void *)'A', 6));
+    add_node(heap, create_heapNode((void *)'B', 5));
+    add_node(heap, create_heapNode((void *)'C', 4));
+    add_node(heap, create_heapNode((void *)'D', 3));
+    add_node(heap, create_heapNode((void *)'E', 2));
+    add_node(heap, create_heapNode((void *)'F', 1));
+
+    heap = createHuffTree(heap);
+
+    CU_ASSERT(getTreeSize(heap->data[1], 0) == 11);
+    destroy_heap(heap);
+
+}
+
 void test_get_parent_index (void)
 {
 	CU_ASSERT(get_parent_index(2) == 1);
@@ -58,8 +75,69 @@ void test_check_leaf() {
     CU_ASSERT(check_leaf(node) == 1);
     node->left = create_heapNode((void *)'B', 2);
     CU_ASSERT(check_leaf(node) == 0);
+    free(node);
+}
+
+void test_ht_to_heap() {
+
+    HashTable *ht = create_table();
+    ht = put(ht, 'A');
+    Heap *heap = create_heap();
+    ht_to_heap(ht, heap);
+    CU_ASSERT((unsigned char)heap->data[1]->byte == 'A');
+    destroy_table(ht);
+    destroy_heap(heap);
 
 }
+
+void test_merge_nodes() {
+
+    Heap *heap = create_heap();
+    add_node(heap, create_heapNode((void *)'A', 2));
+    add_node(heap, create_heapNode((void *)'B', 3));
+    heap = merge_nodes(heap);
+    CU_ASSERT((unsigned char)heap->data[1]->byte == '*' && heap->data[1]->frequency == 5);
+    destroy_heap(heap);
+
+}
+
+void test_create_huffTree() {
+
+    Heap *heap = create_heap();
+    add_node(heap, create_heapNode((void *)'A', 6));
+    add_node(heap, create_heapNode((void *)'B', 5));
+    add_node(heap, create_heapNode((void *)'C', 4));
+    add_node(heap, create_heapNode((void *)'D', 3));
+    add_node(heap, create_heapNode((void *)'E', 2));
+    add_node(heap, create_heapNode((void *)'F', 1));
+
+    heap = createHuffTree(heap);
+
+    CU_ASSERT(heap->data[1]->frequency == 21);
+    destroy_heap(heap);
+
+}
+
+
+void test_min_heapify() {
+
+    Heap *heap = create_heap();
+
+    heap->data[1] = create_heapNode((void *)'A', 3);
+    heap->data[2] = create_heapNode((void *)'B', 2);
+    heap->data[3] = create_heapNode((void *)'C', 1);
+    heap->size = 3;
+
+    min_heapify(heap, 1);
+
+    CU_ASSERT((unsigned char)heap->data[1]->byte == 'C' &&
+              (unsigned char)heap->data[2]->byte == 'B' &&
+              (unsigned char)heap->data[3]->byte == 'A');
+
+    destroy_heap(heap);
+}
+
+
 
 
 #endif //HUFFMAN_TEST_HEAP_H

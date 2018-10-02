@@ -107,8 +107,6 @@ void start_decompression() {
     treeSize = (twoFirstBytes << 3); // >> 3 in the same line, does not work
     treeSize >>= 3;
     trashSize = twoFirstBytes >> 13;
-    printf("%d %d\n", treeSize, trashSize);
-
     printf("Done...!\n");
     printf("Building tree from file...\n");
     tree = make_tree(arquivo, &treeSize, tree);

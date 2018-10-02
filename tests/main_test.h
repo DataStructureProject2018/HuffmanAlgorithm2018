@@ -12,6 +12,12 @@ int run_tests() {
 	test_swap_nodes();
 	test_add_node();
 	test_check_leaf();
+	test_ht_to_heap();
+	test_merge_nodes();
+	test_create_huffTree();
+	test_get_treeSize();
+	test_create_bits();
+	test_min_heapify();
 }
 
 
