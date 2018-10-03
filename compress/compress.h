@@ -77,10 +77,12 @@ void compress_bytes(HashTable *ht, FILE *in, FILE *out, unsigned char trashSize)
             i += tamByte - (tamByte - quantBitsLivres); // atualizamos quantos bits da versao comprimida do byte ja foram utilizados
             fprintf(out, "%c", auxByte);    // Printamos o novo Byte no arquivo comprimido
 
-            if((8 - tamByte + quantBitsLivres) < 0) {
-                auxByte = caractere >> abs(8 - tamByte + quantBitsLivres);
+
+            if((8 - tamByte + quantBitsLivres) < 0) { // verificamos o que falta colocar da versão comprimida no byte a ser printado
+                // como auxByte é um unsigned char, precisamos colocar a parte do short q esta alem desses 8 bits na parte da direita para que possamos usa-la
+                auxByte = caractere >> abs(8 - tamByte + quantBitsLivres); // caso a versao comprimida tenha muitos bits, colocamos a parte mais a esquerda no byte a ser printado
             } else {
-                auxByte = caractere << (8 - tamByte + quantBitsLivres);
+                auxByte = caractere << (8 - tamByte + quantBitsLivres); // colocamos o que falta da versao comprimida na parte mais a esquerda dobyte
             }
 
             i += 8 - (8 - tamByte + quantBitsLivres); // atualizamos quantos bits da versao comprimida do byte ja foram utilizados
@@ -96,7 +98,7 @@ void compress_bytes(HashTable *ht, FILE *in, FILE *out, unsigned char trashSize)
                 auxByte >>= (8 - (tamByte - 8 - quantBitsLivres)); // mandamos todos os bits setados para a direita, de forma que estao no inicio
                 quantBitsUsados = tamByte - 8 - quantBitsLivres; // atualizamos a quantidade de bits setados que possuimos no byte a ser printado
             }
-        } else { // caso tenhamos mais bits nao setados no byte do que a quantidade total de bits da versao comprimida
+        } else { // caso colcar a versao comprimida no byte a ser printado
             auxByte <<= tamByte; // liberamos os bits das posicoes iniciais
             auxByte ^= caractere; // colocamos os bits da versao comprimida no byte a ser printado
             quantBitsUsados += tamByte; // atualizamos a quantidade de bits setados que possuimos no byte a ser printado

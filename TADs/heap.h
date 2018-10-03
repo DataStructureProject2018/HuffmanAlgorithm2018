@@ -101,14 +101,12 @@ void build_min_heap(Heap *heap) {
 // Adiciona todos os nós da hashTable na heap e faz a heap mínima
 Heap* ht_to_heap(HashTable *ht, Heap *heap) {
 
-    unsigned short i, j = 1;
+    unsigned short i;
 
     for(i = 0; i < 256; i += 1) {
 
         if(ht->table[i]){
-            heap->data[j] = create_heapNode(ht->table[i]->byte, ht->table[i]->frequency);
-            heap->size++;
-            j++;
+            heap->data[++heap->size] = create_heapNode(ht->table[i]->byte, ht->table[i]->frequency);
         }
 
     }
