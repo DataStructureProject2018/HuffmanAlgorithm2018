@@ -148,7 +148,7 @@ Heap *merge_nodes(Heap *heap) {
 
         min_heapify(heap, 1);
 
-        if(heap->size >= 1) {
+        if(heap->size) {
             node->frequency += heap->data[1]->frequency;
             node->right = heap->data[1];
             heap->data[1] = heap->data[heap->size];
