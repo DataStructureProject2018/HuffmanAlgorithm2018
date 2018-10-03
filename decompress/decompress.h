@@ -26,10 +26,10 @@ unsigned short extract_trash_and_tree_size(FILE *arquivo) { //gets the size of: 
 
 void decompress_file(FILE *arquivo, off_t fileSize, TreeNode *tree, short int treeSize, unsigned char lixo, FILE *newFile) {
 
-    TreeNode *treeRoot = tree; //saves the root of the tree
-    int i, bit;
-    unsigned char c;
-    unsigned long long j = 0;
+    TreeNode *treeRoot = tree;
+    short int i;
+    unsigned char c, bit;
+    off_t j = 0;
 
     while(j < fileSize - 3 - treeSize) {
 
@@ -37,7 +37,7 @@ void decompress_file(FILE *arquivo, off_t fileSize, TreeNode *tree, short int tr
 
         for(i = 7; i >= 0 ; --i) {
 
-            bit = is_bit_i_set(c, i);// bit will receive the value of the searched bit
+            bit = is_bit_i_set(c, i);
 
             if(bit > 0) {
                 treeRoot = treeRoot->right;
@@ -45,17 +45,17 @@ void decompress_file(FILE *arquivo, off_t fileSize, TreeNode *tree, short int tr
                 treeRoot = treeRoot->left;
             }
 
-            if(!treeRoot->right && !treeRoot->left) {// if a leaf is found
-                fprintf(newFile, "%c", (unsigned char)treeRoot->byte);//write data into file
-                treeRoot = tree; // returning to the root
+            if(!treeRoot->right && !treeRoot->left) {
+                fprintf(newFile, "%c", (unsigned char)treeRoot->byte);
+                treeRoot = tree;
             }
         }
         j++;
     }
-    fread(&c, sizeof(c), 1, arquivo); //giving c the last byte
+    fread(&c, sizeof(c), 1, arquivo);
 
-    for(i = 7; i >= 0 + lixo; --i) { //last byte operation
-        bit = is_bit_i_set(c, i);// bit will receive the value of the searched bit
+    for(i = 7; i >= 0 + lixo; --i) {
+        bit = is_bit_i_set(c, i);
 
         if(bit > 0) {
             treeRoot = treeRoot->right;
@@ -63,9 +63,9 @@ void decompress_file(FILE *arquivo, off_t fileSize, TreeNode *tree, short int tr
             treeRoot = treeRoot->left;
         }
 
-        if(!treeRoot->right && !treeRoot->left) {// if a leaf is found
-            fprintf(newFile, "%c", (unsigned char)treeRoot->byte);//write data into file
-            treeRoot = tree; // returning to the root
+        if(!treeRoot->right && !treeRoot->left) {
+            fprintf(newFile, "%c", (unsigned char)treeRoot->byte);
+            treeRoot = tree;
         }
     }
 
@@ -98,7 +98,7 @@ void start_decompression() {
         return;
     }
 
-    fseek(arquivo, 0, SEEK_END); //arquivo will now point to the end of the file
+    fseek(arquivo, 0, SEEK_END);
 
     off_t fileSize = ftello(arquivo); // off_t can support 2^63 , we use this to support large files
     fseek(arquivo, 0, SEEK_SET);
